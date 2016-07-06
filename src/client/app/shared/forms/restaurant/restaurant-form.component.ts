@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormArray,  FORM_DIRECTIVES, FormControl, FormGroup } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, FormControl, FormGroup } from '@angular/forms';
 import { Restaurant, DataFormatConversion, TimeFormatConversion } from './index';
 
 @Component({
     moduleId: module.id,
     selector: 'sd-restaurant-form',
     templateUrl: 'restaurant-form.component.html',
-    styleUrls: ['restaurant-form.component.html'],
+    styleUrls: ['restaurant-form.component.css'],
     directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class RestaurantFormComponent implements OnInit {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
-import { Restaurant, RestaurantFormComponent, RestaurantService, TimeFormatConversion, DataFormatConversion } from '../shared/index';
+import { Restaurant, RestaurantFormComponent, RestaurantService, TimeFormatConversion, DataFormatConversion, Menu, MenuFormComponent } from '../shared/index';
 
 @Component({
     moduleId: module.id,
@@ -8,7 +8,7 @@ import { Restaurant, RestaurantFormComponent, RestaurantService, TimeFormatConve
     templateUrl: 'restaurant.component.html',
     viewProviders: [TimeFormatConversion, DataFormatConversion],
     styleUrls: ['restaurant.component.css'],
-    directives: [RestaurantFormComponent] 
+    directives: [RestaurantFormComponent, MenuFormComponent] 
 })
 export class RestaurantComponent implements OnInit {
     constructor(public rs: RestaurantService, public tFC: TimeFormatConversion, public dFC: DataFormatConversion) { }
@@ -16,6 +16,8 @@ export class RestaurantComponent implements OnInit {
     init: Restaurant = new Restaurant(null, null, null, null, null, null, null, null, null, null);
     restaurant: any;
     time: any;
+
+    initMenu: Menu = new Menu('Super Special', 'Something super special and stuff', 'Starter');
 
     myRestaurant(event: any) {
         this.restaurant = this.dFC.dataFormatConvert(event.value)

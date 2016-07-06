@@ -1,0 +1,13 @@
+<form *ngIf="formActive" [formGroup]="menuForm" (ngSubmit)="onSubmit()">
+    <label for="name">Name</label>
+    <input type="text" name="name" formControlName="name" value="">
+    <label for="description">Description</label>
+    <textarea name="description" rows="" cols="" formControlName="description" value=""></textarea>
+    <label for="Menu">Choose Menu</label>
+    <div class="options">
+        <input type="radio" formControlName="menu" value="Starter" [checked]= "init.menu === 'Starter'" >
+        <input type="radio" formControlName="menu" value="Main" [checked]= "init.menu === 'Main'" >
+        <input type="radio" formControlName="menu" value="Dessert" [checked]="init.menu === 'Dessert'" >
+    </div>
+    <button type="submit">Save</button>
+</form>

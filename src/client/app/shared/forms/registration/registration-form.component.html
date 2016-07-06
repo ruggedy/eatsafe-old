@@ -1,0 +1,9 @@
+<div class="form-div">
+    <form *ngIf="formActive" [FormGroup]="registrationForm" (ngSubmit)="onSubmit">
+        <input type="text" name="username" value="" formControlName="username" placeholder="Username">
+        <input type="password" name="password" value="" formControlName="password" placeholder="Password">
+
+        <span>By creating an account, you agree to out <a href="#">Terms and Conditions</a></span>
+        <button type="submit">Register</button>
+    </form>
+</div>
