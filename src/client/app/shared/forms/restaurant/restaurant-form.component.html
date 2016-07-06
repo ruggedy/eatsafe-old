@@ -1,0 +1,229 @@
+<form *ngIf="formActive"  [formGroup]= "restaurantForm" (ngSubmit)="onSubmit()" >
+    <label for="name"> Name</label>
+    <input type="text=" formControlName="name">
+    <div class="location" formGroupName='location' >
+        <h2>Address</h2>
+        <label for="address1">Address Line 1</label>
+        <input type="text" formControlName="address1" value="">
+        <label for="address2">Address Line 2</label>
+        <input type="text" formControlName="address2" value="">
+        <label for="postcode">Postcode</label>
+        <input type="text" formControlName="postcode" value="">
+        <label for="city">City</label>
+        <input type="text" formControlName="city" value="">
+    </div>
+    <div class="opening" formGroupName="opening" >
+        <!--formGroup Monday starts-->
+        <div formGroupName="monday" class="form-group">
+            <label for="monday">Monday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Monday ends-->
+        <!--formGroup Teusday starts-->
+        <div formGroupName="tuesday" class="form-group">
+            <label for="tuesday">Tuesday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Tuesday ends-->
+        <!--formGroup Wednesday starts-->
+        <div formGroupName="wednesday" class="form-group">
+            <label for="wednesday">Wednesday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Wednesday ends-->
+        <!--formGroup Thursday starts-->
+        <div formGroupName="thursday" class="form-group">
+            <label for="thursday">Thursday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Thursday ends-->
+        <!--formGroup Friday starts-->
+        <div formGroupName="friday" class="form-group">
+            <label for="friday">Friday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Friday ends-->
+        <!--formGroup Saturday starts-->
+        <div formGroupName="saturday" class="form-group">
+            <label for="saturday">Saturday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Saturday ends-->
+        <!--formGroup Sunday starts-->
+        <div formGroupName="sunday" class="form-group">
+            <label for="sunday">Sunday</label>
+            <div class="open-times">
+                <h3>Opening</h3>
+                <div class="form-group">
+                    <select formControlName="openHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="openMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="close-times">
+                <h3>Closing</h3>
+                <div class="form-group">
+                    <select formControlName="closeHour">
+                        <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
+                    </select>
+                    <span>:</span>
+                    <select formControlName="closeMin">
+                        <option *ngFor="let m of timesMin"  [value]="m">{{m}}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+        <!--formGroup Monday ends-->
+    </div>
+    <div class="contact" formGroupName="contact">
+        <label for="email">Email</label>
+        <input type="text" formControlName="email">
+        <label for="phone">Phone</label>
+        <input type="text" formControlName="phone">
+    </div>
+    <div class="button">
+        <button type="submit">Save</button>
+    </div>
+</form>
