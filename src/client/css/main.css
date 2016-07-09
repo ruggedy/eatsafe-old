@@ -7,6 +7,15 @@ div {
   padding: 0;
 }
 
+/* Color Scheme */
+:root {
+  --lighter-color: rgba(228, 254, 194, 1);
+  --light-color: rgba(202, 254, 133, 1);
+  --normal-color : rgba(111, 190, 8, 1);
+  --dark-color : rgba(78, 133, 5, 1);
+  --placeholder: lightgray;
+}
+
 /* Box-sizing border-box */
 * {
   box-sizing: border-box;
@@ -38,14 +47,6 @@ li {
   margin-top: 4px;
 }
 
-input {
-  border: 1px solid #106cc8;
-  font-size: 14px;
-  height: 40px;
-  outline: none;
-  padding: 8px;
-}
-
 button {
   background-color: #106cc8;
   border-style: none;
@@ -58,6 +59,25 @@ button {
   text-decoration: none;
 }
 
+button:disabled {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: not-allowed;
+  background-color: var(--light-color) !important;
+}
+
 button:hover {
   background-color: #28739e;
+}
+
+a {
+  font-weight: bold;
+    text-decoration: none;
+    color: #1888A8;
+    -webkit-transition: color 100ms ease;
+    -moz-transition: color 100ms ease;
+    transition: color 100ms ease;
+}
+
+a:hover {
+  color: #11718C;
 }

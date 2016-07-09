@@ -19,7 +19,8 @@ var schema = new Schema({
         email:{type: String, required: true},
         phone:{type: String, required: true}
     },
-    menu: [{type: Schema.Types.ObjectId, ref: 'Menu'}]
+    menu: [{type: Schema.Types.ObjectId, ref: 'Menu'}],
+    user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Restaurant', schema);

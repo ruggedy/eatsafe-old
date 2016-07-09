@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 
-import { Config, NameListService, NavbarComponent, ToolbarComponent, RestaurantService, DataFormatConversion, TimeFormatConversion } from './shared/index';
+import { Config, NameListService, 
+  NavbarComponent, ToolbarComponent, 
+  RestaurantService, DataFormatConversion, 
+  TimeFormatConversion, AuthService, AuthGuard  } from './shared/index';
 
 /**
  * This class represents the main application component. Within the @Routes annotation is the configuration of the
@@ -11,7 +14,7 @@ import { Config, NameListService, NavbarComponent, ToolbarComponent, RestaurantS
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  viewProviders: [NameListService, HTTP_PROVIDERS, RestaurantService],
+  viewProviders: [NameListService, HTTP_PROVIDERS, RestaurantService, AuthService],
   templateUrl: 'app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
 })

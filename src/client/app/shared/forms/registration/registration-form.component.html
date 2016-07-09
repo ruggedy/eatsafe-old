@@ -1,9 +1,28 @@
 <div class="form-div">
-    <form *ngIf="formActive" [FormGroup]="registrationForm" (ngSubmit)="onSubmit">
-        <input type="text" name="username" value="" formControlName="username" placeholder="Username">
-        <input type="password" name="password" value="" formControlName="password" placeholder="Password">
-
-        <span>By creating an account, you agree to out <a href="#">Terms and Conditions</a></span>
-        <button type="submit">Register</button>
-    </form>
+    <div class="form">
+        <div class="form-header">
+            <h2>{{details.header}} </h2>
+            <p> {{details.detail}} <a href="#">{{details.signType}} </a></p>
+        </div>
+        <div class="form-body">
+            <form *ngIf="formActive" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <div class="input-control">
+                    <input type="text" name="username" value="" formControlName="username" placeholder="Username">
+                    <span class="fa fa-user"></span>
+                </div>
+                <div class="input-control">
+                    <input type="password" name="password" value="" formControlName="password" placeholder="Password">
+                    <span class="fa fa-lock"></span>
+                </div>
+                <div class="change" *ngIf="details.signShow" >
+                    <div class="input-control">
+                        <input type="password" name="confirmPassword" value="" formControlName="confirmPassword" placeholder="Confirm Password">
+                        <span class="fa fa-lock"></span>
+                    </div>
+                    <span>By creating an account, you agree to our <a href="#">Terms and Conditions</a></span>
+                </div>      
+                <button type="submit">{{details.button}} </button>
+            </form>
+        </div>
+    </div>
 </div>

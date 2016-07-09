@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrationFormComponent} from '../../shared/index';
+import { Router } from '@angular/router';
+import { RegistrationFormComponent, AuthService, RegInput} from '../../shared/index';
 
 @Component({
     moduleId: module.id,
@@ -9,8 +10,25 @@ import { RegistrationFormComponent} from '../../shared/index';
     directives: [RegistrationFormComponent]
 })
 export class SignUpComponent implements OnInit {
-    constructor() { }
+    constructor(private _authService: AuthService, private _router: Router) { }
 
-    ngOnInit() { }
+    formActive: boolean = true;
+    input:RegInput = new RegInput('Sign Up', 'Already Have An Account', 'Sign In', true, '#', 'Register');
+    
+
+    onCreate(event:any){
+        console.log(event.value);
+        this._authService.signup(event.value)
+            .subscribe(
+                data => {
+                    localStorage.setItem('token', data.obj);
+                    localStorage.setItem('userId', data.userId);
+                    this._router.navigate(['/restaurant']);
+                },
+                error => console.log(error)
+            );
+    }
+    ngOnInit() {
+     }
 
 }

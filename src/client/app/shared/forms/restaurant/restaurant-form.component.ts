@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormControl, FormGroup } from '@angular/forms';
-import { Restaurant, DataFormatConversion, TimeFormatConversion } from './index';
+import { REACTIVE_FORM_DIRECTIVES, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Restaurant, DataFormatConversion, TimeFormatConversion, FormValidator } from '../../index';
 
 @Component({
     moduleId: module.id,
@@ -11,7 +11,7 @@ import { Restaurant, DataFormatConversion, TimeFormatConversion } from './index'
 })
 export class RestaurantFormComponent implements OnInit {
     
-   
+   constructor(){}
     
     formActive: boolean = true;
     @Input() init: Restaurant = new Restaurant(null,null,null,null,null,null,null,null,null,null);
@@ -23,6 +23,7 @@ export class RestaurantFormComponent implements OnInit {
     error: string;
     restaurantForm: FormGroup;
     final: any[] = null;
+    section: any[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
     onSubmit() {
         
@@ -30,6 +31,7 @@ export class RestaurantFormComponent implements OnInit {
            value: this.restaurantForm.value
        })
     }
+
     
 
     ngOnInit() { 
@@ -63,12 +65,12 @@ export class RestaurantFormComponent implements OnInit {
 
         /***** creating the restaurant form ******/
          this.restaurantForm = new FormGroup( {
-        name: new FormControl(this.init.name? this.init.name : ''),
+        name: new FormControl(this.init.name? this.init.name : '', Validators.required),
         location: new FormGroup({
-            address1: new FormControl(this.init.address1? this.init.address1 : ''),
-            address2: new FormControl(this.init.address2? this.init.address2 : ''),
-            postcode: new FormControl(this.init.postcode? this.init.postcode : ''),
-            city: new FormControl(this.init.city? this.init.city : '')
+            address1: new FormControl(this.init.address1? this.init.address1 : '', Validators.required),
+            address2: new FormControl(this.init.address2? this.init.address2 : '', Validators.required),
+            postcode: new FormControl(this.init.postcode? this.init.postcode : '', Validators.required),
+            city: new FormControl(this.init.city? this.init.city : '', Validators.required)
         }),
         opening: new FormGroup({
             monday: new FormGroup({
@@ -115,11 +117,13 @@ export class RestaurantFormComponent implements OnInit {
             })
         }),
         contact: new FormGroup({
-            email: new FormControl(this.init.email? this.init.email: ''),
-            phone: new FormControl(this.init.phone? this.init.phone: ''),
+            email: new FormControl(this.init.email? this.init.email: '', Validators.compose([Validators.required, FormValidator.isEmail])),
+            phone: new FormControl(this.init.phone? this.init.phone: '', Validators.required),
         }),
     });
     
-}
+    }
+
+    
 
 }

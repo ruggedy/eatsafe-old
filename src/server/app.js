@@ -13,6 +13,7 @@ var port = process.env.PORT || 3000;
 
 var appRoutes = require('./routes/app');
 var restaurantRoutes = require('./routes/restaurants');
+var userRoutes = require('./routes/users');
 
 var app = express();
 mongoose.Promise = global.Promise;
@@ -29,15 +30,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5555');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept, X-Requested-With')
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
-app.use('/restaurant', restaurantRoutes);
-app.use('/', appRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/restaurant', restaurantRoutes);
+app.use('/api/', appRoutes);
 
 app.listen(port, function(err) {
     console.log('Running server on Port ' + port);

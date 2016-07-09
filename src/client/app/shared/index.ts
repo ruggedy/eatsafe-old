@@ -7,3 +7,4 @@ export * from './toolbar/index';
 export * from './forms/index';
 export * from './services/index';
 export * from './config/env.config';
+export * from './form-validator';
