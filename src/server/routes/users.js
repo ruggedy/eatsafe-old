@@ -60,7 +60,7 @@ router.post('/signin', function (req, res, next) {
        }
 
        var cert = fs.readFileSync(path.join(__dirname, 'private.pem'));
-       var token = jwt.sign({user: doc}, cert, {algorithm: 'RS256', expiresIn: 60});
+       var token = jwt.sign({user: doc}, cert, {algorithm: 'RS256', expiresIn: 14400});
        res.status(200).json({
            message: 'Succesfully signed in',
            obj: token,

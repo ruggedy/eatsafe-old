@@ -1,0 +1,9 @@
+<nav>
+    <ul>
+        <li *ngFor="let options of sideBarOptions" >
+            <a [routerLink]="['options.navLink']">
+                <i class="fa {{options.navIcon}}"></i>
+            </a>
+        </li>
+    </ul>
+</nav>

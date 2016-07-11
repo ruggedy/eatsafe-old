@@ -12,15 +12,17 @@ export class TimeFormatConversion {
         */
         let final: any[] = [];
          if (start && end) {
+             let days: any[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+             let color: any[] = ['blue', 'green', 'purple', 'light', 'gray', 'red', 'dark'];
 
-            let time: any = {}
-
-            for (let i=0; i<start.length; i++) {
+            for (let i=0; i<days.length; i++) {
+                let time: any = {}
                 let startHour = Math.floor(start[i]/3600);
                 let startMin = (start[i]%3600)/60;
                 let endHour = Math.floor(end[i]/3600);
                 let endMin = (end[i]%3600)/60;
 
+                
                 if( startHour === 0) {
                     time['startHour'] = 0 +''+startHour; 
                 }
@@ -56,8 +58,9 @@ export class TimeFormatConversion {
                 } else {
                     time['endMin'] = String(endMin)
                 }
- 
-               final[i]= time; 
+                time['day'] = days[i];
+                time['color'] = color[i];
+                final[i]= time; 
                 
             }
         } else {

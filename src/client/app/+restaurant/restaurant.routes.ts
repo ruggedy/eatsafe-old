@@ -1,6 +1,6 @@
 import { RouterConfig } from '@angular/router';
 
-import { RestaurantComponent, ProfileCreateComponent, ProfileEditComponent } from './index';
+import { RestaurantComponent, ProfileCreateComponent, ProfileEditComponent, ProfileShowComponent, MenuCreateComponent } from './index';
 import { AuthGuard, ProfileGuard } from '../shared/index';
 
 export const RestaurantRoutes: RouterConfig = [
@@ -17,6 +17,15 @@ export const RestaurantRoutes: RouterConfig = [
                 path: 'edit',
                 component: ProfileEditComponent,
                 canActivate: [AuthGuard, ProfileGuard]
+            },
+            {
+                path: 'profile',
+                component: ProfileShowComponent,
+                canActivate: [AuthGuard]
+            },
+            {
+                path: 'menu',
+                component: MenuCreateComponent
             }
         ]
         

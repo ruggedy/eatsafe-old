@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 
-import { Config, NameListService, 
-  NavbarComponent, ToolbarComponent, 
-  RestaurantService, DataFormatConversion, 
+import { Config, NameListService, DataFormatConversion, 
   TimeFormatConversion, AuthService, AuthGuard  } from './shared/index';
 
 /**
@@ -14,9 +12,9 @@ import { Config, NameListService,
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  viewProviders: [NameListService, HTTP_PROVIDERS, RestaurantService, AuthService],
+  viewProviders: [NameListService, HTTP_PROVIDERS, AuthService],
   templateUrl: 'app.component.html',
-  directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
+  directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
   constructor() {

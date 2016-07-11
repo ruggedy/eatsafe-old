@@ -1,13 +1,13 @@
-import { Restaurant } from '../index'
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Restaurant, RestaurantFormComponent, TimeFormatConversion, DataFormatConversion } from '../index';
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable() 
 export class RestaurantService {
-    constructor(public http: Http){}
+    constructor(public http: Http, public tFC: TimeFormatConversion){}
 
     restaurant: any = null;
 
@@ -30,6 +30,28 @@ export class RestaurantService {
         return this.http.get('<%= API_DEST%>'+'restaurant'+token)
             .map(this.extractData)
             .catch(this.errorHandler);
+    }
+
+    convertData(value: any) {
+        let init: Restaurant = new Restaurant(null, null,null,null,null,null,null,null,null,null);
+        let start: any[] = [];
+        let end: any[] = [];
+        let time: any;
+        for(let i=0; i<7; i++) {
+            start[i] = value.opening[i].starttime;
+            end[i] = value.opening[i].endtime;
+        }
+        time = this.tFC.timeFormatConvert(start, end);
+        let j = value.location.address.split(', ');
+        init.name = value.name;
+        init.address1 = j[0];
+        init.address2 = j[1];
+        init.city = value.location.city;
+        init.postcode = value.location.postcode;
+        init.email = value.contact.email;
+        init.phone = value.contact.phone;
+        return [init, time];
+
     }
 
 

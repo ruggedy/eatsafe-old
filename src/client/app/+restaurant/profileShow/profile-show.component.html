@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="my-grid">
+            <md-card> 
+                <md-card-header>Opening Hours</md-card-header>
+                <md-card-content>
+                    <ul>
+                        <li *ngFor="let working of workingHours" [ngClass]="working.color">
+                            <div class="row">
+                                <div class="col-md-7 day " >
+                                    {{working.day.substr(0,1).toUpperCase() + working.day.slice(1)}}
+                                </div>
+                                <div class="col-md-offset-1 col-md-4 time1">
+                                    {{working.startHour}}:{{working.startMin}} - {{working.endHour}}:{{working.endMin}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </md-card-content>
+            </md-card>
+        </div>
+        <div class="my-grid">
+            <div class="row">
+                <div class="my-grid-stack">
+                    <md-card>
+                        <md-card-header>
+                            Address
+                        </md-card-header>
+                        <md-card-content class="address" *ngIf="restaurant">
+                            <span>Street Name: <span class="headers">{{restaurant.address1}}, {{restaurant.address2? restaurant.address2 : ''}}</span></span>
+                            <span>Postcode: <span class="headers">{{restaurant.postcode}}</span></span>
+                            <span>City: <span class="headers">{{restaurant.city}}</span></span>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div class="my-grid-stack">
+                    <md-card>
+                        <md-card-header>
+                            Contact info
+                        </md-card-header>
+                        <md-card-content  class="address" *ngIf="restaurant" >
+                            <span>Email: <span>{{restaurant.email}} </span></span>
+                            <span>Phone: <span>{{restaurant.phone}} </span></span>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            

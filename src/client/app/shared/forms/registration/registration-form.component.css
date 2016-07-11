@@ -90,7 +90,7 @@ input {
 }
 
 .form-div .form .form-body .input-control input:focus {
-    border-left: 5px solid var(--normal-color); ;
+    border-left: 5px solid var(--normal-color); 
     opacity: 1 !important;
 }
 
@@ -101,13 +101,13 @@ input {
 
 .form-div .form .form-body .input-control input:hover {
     cursor: pointer;
-    border-left: 5px solid var(--normal-color);;
-    opacity: 0.6
+    border-left: 5px solid var(--normal-color);
+    opacity: 0.6;
 }
 
 .form-div .form .form-body .input-control input:hover+span {
-    color: var(--normal-color);;
-    opacity: 0.6
+    color: var(--normal-color);
+    opacity: 0.6;
 }
 
 /* ----- Terms and Conditions Text ---- */

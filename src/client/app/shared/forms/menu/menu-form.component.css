@@ -1,0 +1,239 @@
+/*-- Card-css --*/
+
+md-card {
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+md-card-content {
+    height: 35em;
+}
+
+md-card-header  {
+    border-bottom: 1px solid #E6E9ED;
+}
+
+md-card-header h2 {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+md-card-actions {
+    border-top: 1px solid #E6E9ED;
+}
+
+/*-- Food-Form Section*/
+.menu-label {
+    padding-top: .5em;
+    color: var(--writing-blue);
+    text-align: right;
+    font-size: .9em;
+    font-weight: bold;
+    font-family:  "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+}
+
+.form-group {
+    margin-bottom: .7em;
+}
+
+.text-box,
+.text-area {
+    margin-left: 5%;
+}
+
+input, textarea {
+    width: 100%;
+}
+
+input, textarea {
+    height: 34px;
+    font-size: .9em;
+    padding: 6px 12px;
+    border: transparent;
+    outline: none;
+    box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.2);
+    -webkit-transition: border-left 100ms ease-in;
+    -moz-transition: border-left 100ms ease-in;
+    transition: border-left 100ms ease-in;
+}
+
+textarea {
+    height: 7em;
+}
+
+input:hover, textarea:hover {
+    border-left: 5px solid var(--normal-color);
+    opacity: 0.6;
+}
+input:focus, textarea:focus {
+    border-left: 5px solid var(--normal-color);
+    opacity: 1;
+}
+
+form div.form {
+    margin-left: 5%;
+}
+
+form div.form col-md-4 {
+    text-align: right;
+}
+
+/*--- Food-Type Section ---*/
+
+md-radio-group .test>div div {
+    position: relative;
+    width: 75%;
+    margin-left: 15%;
+    margin-right: 10%; 
+    height: 4em;
+    color: var(--writing-blue);
+    -webkit-transition: box-shadow  200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
+    -moz-transition: box-shadow 200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
+    transition: box-shadow  200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+md-radio-group .test>div div.selected {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    background-color: var(--normal-color);
+    color: var(--gray-white);
+}
+
+md-radio-group .test>div:nth-of-type(2) div{
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+
+md-radio-group .test>div:nth-of-type(3) div {
+    margin-left: 10%;
+    margin-right: 15%;
+}
+
+md-radio-group .test>div div md-radio-button {
+    position: absolute;
+    top: 1.2em;
+    left: 1em;
+    z-index: 500;
+}
+
+/*-- Allergy Selection --*/
+
+.test li {
+    margin-left: 12em;
+    margin-right: 4em;
+    height: 5em;
+    color: var(--writing-blue);
+    position: relative;
+    margin-bottom: 2em;
+
+    -webkit-transition: box-shadow  200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
+    -moz-transition: box-shadow 200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
+    transition: box-shadow  200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.test li.selected {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    background-color: var(--normal-color);
+    color: var(--gray-white);
+}
+
+.test li md-checkbox {
+    position: absolute;
+    top: 2em;
+    transform: translateY(-50%);
+    z-index: 500;
+}
+
+.test li label {
+    position: absolute;
+    top: 1.6em;
+    left: 45%;
+    font-size: 1.5em;
+    transform: translate(-50%, -50%);
+}
+
+.test:nth-child(3n+2) li {
+    margin-left: 8em;
+    margin-right: 8em;
+    
+    height: 5em;
+}
+
+.test:nth-child(3n+3) li {
+    margin-right: 12em;
+    margin-left: 4em;
+}
+
+.test:nth-child(2) li label, 
+.test:nth-child(12) li label, 
+.test:nth-child(14) li label{
+    font-size: 1em;
+}
+
+.test:nth-child(2) li label {
+    top: 2.4em ;
+}
+.test:nth-child(12) li label {
+    top: 2.4em ;
+}
+.test:nth-child(14) li label {
+    top: 2.6em ;
+}
+
+/*--- button section ---*/
+
+.buttons {
+    margin-left: 12em;
+}
+
+.buttons button {
+    width: 8em;
+    margin-right: 2em;
+}
+
+.buttons button:first-of-type {
+    margin-left: 25em;
+    border: 1px solid var(--normal-color);
+    background-color: transparent;
+    color: var(--normal-color);
+    outline: none;
+    -webkit-transition: border  100ms ease-in, color  100ms ease-in;
+    -moz-transition: border 100ms ease-in, color  100ms ease-in;
+    transition: border  100ms ease-in, color  100ms ease-in;
+}
+
+.buttons button:first-of-type:hover {
+    border: 1px solid var(--dark-color);
+    color: var(--dark-color);
+}
+
+.buttons button:last-of-type {
+    background-color: var(--normal-color);;
+    color: white;
+    outline: none;
+    -webkit-transition: background-color  100ms ease-in;
+    -moz-transition: background-color 100ms ease-in;
+    transition: background-color  100ms ease-in;
+}
+
+.buttons button:last-of-type:hover {
+    background-color: var(--dark-color);
+    
+}
+
+
+/*-- responsive section ---*/
+
+@media screen and (max-width: 1450px) {
+    .test li {
+        margin-left: 4em;
+        margin-right: 1em;
+    } 
+    .test:nth-child(3n+2) li {
+        margin-left: 2.5em;
+        margin-right: 2.5em;
+    } 
+    .test:nth-child(3n+3) li {
+        margin-left: 1em;
+        margin-right: 4em;
+    } 
+}
