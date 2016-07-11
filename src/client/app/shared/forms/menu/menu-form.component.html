@@ -1,6 +1,6 @@
 <md-card>
     <md-card-header>
-        <h2>Meal Form</h2>
+        <h2>{{toggled? 'Fill Menu Form' : 'Select Allergens'}}</h2>
     </md-card-header>
     <md-card-content>
         <form *ngIf="formActive && toggled" [formGroup]="menuForm">
@@ -35,21 +35,21 @@
                 </div>
                 <div class="col-md-offset-2 col-md-8">
                     <div class="options">
-                        <md-radio-group formControlName="menu" (change)="updateRadio($event)" >
+                        <md-radio-group formControlName="menu" (change)="updateRadio($event)">
                             <div class="row test">
                                 <div class="col-md-4">
                                     <div [ngClass]="validateRadio('Starter')? 'selected' : ''">
-                                        <md-radio-button  value="Starter" [checked]= "init.menu === 'Starter'"> Starter</md-radio-button>
+                                        <md-radio-button  value="Starter" > Starter</md-radio-button>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div [ngClass]="validateRadio('Main')? 'selected' : ''">
-                                        <md-radio-button  value="Main" [checked]= "init.menu === 'Main'"> Main </md-radio-button>                                            
+                                        <md-radio-button  value="Main" > Main </md-radio-button>                                            
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div [ngClass]="validateRadio('Dessert')? 'selected' : ''">
-                                        <md-radio-button  value="Dessert" [checked]="init.menu === 'Dessert'">Dessert</md-radio-button>                                            
+                                        <md-radio-button  value="Dessert" >Dessert</md-radio-button>                                            
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
     </md-card-content>
     <md-card-actions>
         <div class="buttons">
-            <button type="button" (click)="toggle()">{{ toggled? 'Next' : 'Previous'}}</button>
+            <button type="button" (click)="toggle()" [disabled]="disableToggle()" >{{ toggled? 'Next' : 'Previous'}}</button>
             <button type="button" (click)="onSubmit()" [disabled]="validChecked">Save</button>
         </div>
     </md-card-actions>

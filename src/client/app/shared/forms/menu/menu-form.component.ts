@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl} from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl, Validators} from '@angular/forms';
 import { MD_CHECKBOX_DIRECTIVES } from '@angular2-material/checkbox';
 import { MD_RADIO_DIRECTIVES, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
@@ -42,13 +42,15 @@ export class MenuFormComponent implements OnInit {
     menu : Menu;
     menuForm: FormGroup;
 
-    test() {
-        console.log(this.menuForm.value)
+    disableToggle(){
+        if(!this.menuForm.valid) {
+            return true;
+        }
+        return false;
     }
 
     toggle(){
         this.toggled = !this.toggled;
-        console.log(this.toggled);
         if(this.toggled === false && this.checked[0] !== undefined) {
             this.validChecked = false;
         } else {
@@ -56,10 +58,16 @@ export class MenuFormComponent implements OnInit {
         }
     }
     onSubmit() {
-        this.value.emit({
-            value: this.menuForm.value,
-            checked: this.checked
-        })
+        if(this.checked.length > 1 && this.menuForm.valid) {
+            this.value.emit({
+                value: this.menuForm.value,
+                checked: this.checked
+            });
+            return true;
+        }
+        console.log("Something Went terribly Wrong, you need to go die now"); // TODO: Defo Remove .. if found in Prod, Hunt <= this guy down.
+        return false;
+        
     }
 
     validateChecked(value: string){
@@ -76,6 +84,7 @@ export class MenuFormComponent implements OnInit {
 
     updateRadio(value: any) {
         this.init.menu = value.value;
+        console.log(this.init.menu);
     }
       
     validateRadio(value: string){
@@ -99,7 +108,6 @@ export class MenuFormComponent implements OnInit {
         }
 
         if(!this.toggled && this.checked[0] !== undefined){
-            console.log(this.checked);
             this.validChecked = false;
         } else {
             this.validChecked = true;
@@ -110,9 +118,9 @@ export class MenuFormComponent implements OnInit {
 
     ngOnInit() {
         this.menuForm = new FormGroup({
-            name: new FormControl(this.init? this.init.name : ''),
-            description: new FormControl(this.init? this.init.description : ''),
-            menu: new FormControl(this.init? this.init.menu : '')
+            name: new FormControl(this.init? this.init.name : '', Validators.required),
+            description: new FormControl(this.init? this.init.description : '', Validators.required),
+            menu: new FormControl(this.init? this.init.menu : '', Validators.required)
         })
      }
 

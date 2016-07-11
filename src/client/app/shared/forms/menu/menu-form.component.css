@@ -1,4 +1,4 @@
-/*-- Card-css --*/
+/*-- Card-Css --*/
 
 md-card {
     margin-left: 1.5em;
@@ -218,6 +218,15 @@ md-radio-group .test>div div md-radio-button {
 .buttons button:last-of-type:hover {
     background-color: var(--dark-color);
     
+}
+
+/*--- Card-Header ----*/
+
+md-card-header h2 {
+    display: block;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    color: var(--writing-blue);
 }
 
 
