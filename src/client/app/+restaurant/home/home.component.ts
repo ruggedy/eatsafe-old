@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, SimpleChange } from '@angular/core';
 import { RestaurantService } from '../../shared/index';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
@@ -10,27 +10,28 @@ import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
     styleUrls: ['home.component.css'],
     directives:[MD_CARD_DIRECTIVES, MD_LIST_DIRECTIVES]
 })
-export class RestaurantHomeComponent implements OnInit {
+export class RestaurantHomeComponent implements OnInit, OnDestroy, OnChanges {
     constructor(private _rs:RestaurantService) { }
 
     restaurant: any = null;
-    starters: number = 0;
-    mains: number = 0;
-    dessert: number = 0;
-    allergens: string[] = [];
+    starters: number[] = null;
+    allergens: string[] = null;
     final: any;
     objs: any = [];
+    changeLog: string[] = [];
 
     getMenuData(value: any) {
+        let starters = [0,0,0];
         for(let i=0; i<value.length; i++) {
             if(value[i].menu === 'Starter'){
-                this.starters+=1;
+                starters[0]+=1;
             } else if(value[i].menu === 'Main') {
-                this.mains+=1;
+                starters[1]+=1;
             } else if (value[i].menu === 'Dessert'){
-                this.dessert+=1;
+                starters[2]+=1;
             }
         }
+        return starters;
     }
 
     getAllergenData(value: any) {
@@ -40,8 +41,7 @@ export class RestaurantHomeComponent implements OnInit {
                 objs.push(value[i].allergens[j]);
             }
         }
-        this.allergens = this.uniq(objs);
-        console.log(this.allergens);
+       return this.uniq(objs);
     }
 
     uniq(a: any) {
@@ -55,22 +55,41 @@ export class RestaurantHomeComponent implements OnInit {
         });
     }
 
+    
+
+    ngOnDestroy(){
+        this.restaurant = null;
+        this.starters = null;
+        this.allergens = null;
+     }
+
     ngOnInit() {
-        if(this._rs.restaurant) {
+        if(this._rs.restaurant && this._rs.menu) {
+            console.log('this is data', this._rs.restaurant);
+            this.starters = this.getMenuData(this._rs.restaurant.menu);
+            this.allergens = this.getAllergenData(this._rs.restaurant.menu);
             this.restaurant = this._rs.restaurant;
-            this.getMenuData(this.restaurant.menu);
-            this.getAllergenData(this.restaurant.menu);
         } else {
             this._rs.getRestaurant()
                 .subscribe(
                     data => {
+                        this.starters = this.getMenuData(data.menu);
+                        this.allergens = this.getAllergenData(data.menu);
                         this.restaurant = data;
                         this._rs.restaurant = data;
-                        this.getMenuData(this.restaurant.menu);
-                        this.getAllergenData(this.restaurant.menu);
+                        this._rs.menu = data.menu;
                     }
                 )
         }
      }
 
+    ngOnChanges(changes: {[propName: string] : SimpleChange}){
+        for(let propName in changes) {
+            let chng = changes[propName];
+             let cur  = JSON.stringify(chng.currentValue);
+      let prev = JSON.stringify(chng.previousValue);
+        this.changeLog.push(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+        console.log(this.changeLog);
+        }
+    }
 }

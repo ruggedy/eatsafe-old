@@ -22,33 +22,33 @@
             </md-card>
         </div>
     </div>
-    <div class="col-md-6">
+    <div *ngIf="starters" class="col-md-6">
         <div class="row menu-type-group">
             <div class="col-md-4">
                 <div class="menu-type">
                     <md-card>
-                        {{starters}}
+                        {{starters[0]}}
                     </md-card>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="menu-type">
                     <md-card>
-                        {{mains}}
+                        {{starters[1]}}
                     </md-card>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="menu-type">
                     <md-card>
-                        {{dessert}}
+                        {{starters[2]}}
                     </md-card>
                 </div>
             </div>
             <div class="allergens-list">
-                <div class="col-md-12">
-                    <md-card ng-if="allergens" *ngFor="let allergens of allergens">
-                        {{allergens}}
+                <div *ngIf="allergens" class="col-md-12">
+                    <md-card *ngFor="let all of allergens">
+                        {{all}}
                     </md-card>
                 </div>
             </div>

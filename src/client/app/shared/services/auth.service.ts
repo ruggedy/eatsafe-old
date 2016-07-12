@@ -42,4 +42,10 @@ export class AuthService {
         }
         return tokenNotExpired('token');
     }
+    hasRestaurant() {
+        if(localStorage.getItem('restaurant')) {
+            return true;
+        }
+        return false;
+    }
 }

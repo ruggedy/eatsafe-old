@@ -14,8 +14,6 @@ export class SignUpComponent implements OnInit {
 
     formActive: boolean = true;
     input:RegInput = new RegInput('Sign Up', 'Already Have An Account', 'Sign In', true, '#', 'Register');
-    
-
     onCreate(event:any){
         console.log(event.value);
         this._authService.signup(event.value)
@@ -23,7 +21,7 @@ export class SignUpComponent implements OnInit {
                 data => {
                     localStorage.setItem('token', data.obj);
                     localStorage.setItem('userId', data.userId);
-                    this._router.navigate(['/restaurant']);
+                    this._router.navigate(['restaurant', 'profile/new']);
                 },
                 error => console.log(error)
             );

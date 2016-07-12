@@ -10,6 +10,7 @@ export class RestaurantService {
     constructor(public http: Http, public tFC: TimeFormatConversion){}
 
     restaurant: any = null;
+    menu: any[] = null;
 
     addRestaurant (restaurant: Restaurant): Observable<Restaurant> {
         const body = JSON.stringify({restaurant});

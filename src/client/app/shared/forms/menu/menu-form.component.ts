@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router} from '@angular/router';
 import { MD_CHECKBOX_DIRECTIVES } from '@angular2-material/checkbox';
 import { MD_RADIO_DIRECTIVES, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
@@ -17,6 +18,7 @@ export class MenuFormComponent implements OnInit {
     @Input() init: Menu= new Menu(null, null, 'Main');
     @Output() value = new EventEmitter();
     @Input() checked: string[] = [];
+    @Input() nav: string[] = [];
     formActive: boolean = true;
     toggled: boolean = true;
     validChecked: boolean = true;
@@ -42,6 +44,8 @@ export class MenuFormComponent implements OnInit {
     menu : Menu;
     menuForm: FormGroup;
 
+    constructor(private _router:Router) { }
+
     disableToggle(){
         if(!this.menuForm.valid) {
             return true;
@@ -62,7 +66,7 @@ export class MenuFormComponent implements OnInit {
             this.value.emit({
                 value: this.menuForm.value,
                 checked: this.checked
-            });
+            });       
             return true;
         }
         console.log("Something Went terribly Wrong, you need to go die now"); // TODO: Defo Remove .. if found in Prod, Hunt <= this guy down.
@@ -113,8 +117,6 @@ export class MenuFormComponent implements OnInit {
             this.validChecked = true;
         }
     }
-
-    constructor() { }
 
     ngOnInit() {
         this.menuForm = new FormGroup({

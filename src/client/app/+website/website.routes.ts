@@ -6,6 +6,11 @@ import { AuthGuard, ProfileGuard } from '../shared/index';
 export const WebsiteRoutes: RouterConfig = [
     {
         path: '',
+        redirectTo:'home',
+        pathMatch: 'full'
+    },
+    {
+        path: 'home',
         component: WebsiteComponent,
         children: [
             {
@@ -23,9 +28,17 @@ export const WebsiteRoutes: RouterConfig = [
                     {
                         path:'signin',
                         component: SignInComponent
+                    },
+                    {
+                        path: '**',
+                        redirectTo: 'home',
                     }
                 ]
 
+            },
+            {
+                path: '**',
+                redirectTo: 'home',
             }
         ]
         

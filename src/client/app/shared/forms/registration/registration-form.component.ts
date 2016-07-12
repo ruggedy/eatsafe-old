@@ -1,6 +1,7 @@
 import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl, Validators} from '@angular/forms'
 import { Registration, RegInput,FormValidator } from '../../index';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -20,12 +21,12 @@ export class RegistrationFormComponent implements OnInit {
     registration: Registration;
     
     registrationForm: FormGroup;
-    constructor() { }
+    constructor(private _router: Router) { }
 
     onSubmit(){
         this.user.emit ({
             value: this.registrationForm.value
-        })
+        });
     }
 
     ngOnInit() { 

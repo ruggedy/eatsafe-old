@@ -16,6 +16,7 @@ export class ProfileCreateComponent implements OnInit {
     init: Restaurant = new Restaurant(null, null, null, null, null, null, null, null, null, null);
     restaurant: any;
     time: any;
+    nav: string[] = ['home'];
 
     myRestaurant(event: any) {
         this.restaurant = this.dFC.dataFormatConvert(event.value)

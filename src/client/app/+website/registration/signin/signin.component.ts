@@ -21,9 +21,16 @@ export class SignInComponent implements OnInit {
         this._authService.signin(event.value)
             .subscribe(
                 data => {
+                    console.log(data);
                     localStorage.setItem('token', data.obj);
                     localStorage.setItem('userId', data.userId);
-                    this._router.navigate(['/restaurant/profile']);
+                    if(data.restaurantId) {
+                        localStorage.setItem('restaurant', data.restaurantId);
+                        this._router.navigate(['restaurant', 'home']); 
+                        return 
+                    }
+                    this._router.navigate(['restaurant', 'profile/new']);
+                    return
                 },
                 error => console.log(error)
             );

@@ -6,7 +6,11 @@ import { ProfileGuard ,AuthGuard, AuthService, RestaurantService, TimeFormatConv
 
 const routes: RouterConfig = [
   ...WebsiteRoutes,
-  ...RestaurantRoutes
+  ...RestaurantRoutes,
+  {
+        path: '**',
+        redirectTo: 'home',
+    },
 ];
 
 export const APP_ROUTER_PROVIDERS = [

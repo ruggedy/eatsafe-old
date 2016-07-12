@@ -11,3 +11,18 @@ ul {
   list-style-type: none;
   padding: 0 0 0 8px;
 }
+
+.color-1 {
+  background-color: var(--normal-color);
+  width: 2em;
+}
+
+.color-2 {
+  background-color: var(--dark-color);
+  width: 2em;
+}
+
+.color-3 {
+  background-color: var(--light-color);
+  width: 2em;
+}

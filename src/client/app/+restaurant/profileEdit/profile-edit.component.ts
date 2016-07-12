@@ -13,6 +13,7 @@ export class ProfileEditComponent implements OnInit {
     constructor(public rs: RestaurantService, public tFC: TimeFormatConversion, public dFC: DataFormatConversion) { }
     
     restaurant: any;
+    nav: string[] = ['restaurant', 'home'];
 
     myRestaurant(event: any) {
         this.restaurant = this.dFC.dataFormatConvert(event.value)

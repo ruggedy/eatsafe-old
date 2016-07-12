@@ -61,10 +61,12 @@ router.post('/signin', function (req, res, next) {
 
        var cert = fs.readFileSync(path.join(__dirname, 'private.pem'));
        var token = jwt.sign({user: doc}, cert, {algorithm: 'RS256', expiresIn: 14400});
+       console.log(doc);
        res.status(200).json({
            message: 'Succesfully signed in',
            obj: token,
-           userId: doc._id
+           userId: doc._id,
+           restaurantId: doc.restaurant? doc.restaurant : null
        });
     });
 });

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Restaurant, DataFormatConversion, TimeFormatConversion, FormValidator } from '../../index';
 
 @Component({
@@ -11,11 +12,12 @@ import { Restaurant, DataFormatConversion, TimeFormatConversion, FormValidator }
 })
 export class RestaurantFormComponent implements OnInit {
     
-   constructor(){}
+   constructor(private _router: Router){}
     
     formActive: boolean = true;
     @Input() init: Restaurant = new Restaurant(null,null,null,null,null,null,null,null,null,null);
     @Input() timeConvert: any = null;
+    @Input() nav: string[] = ['home']
     @Output() restaurant = new EventEmitter();
     timesHour: string[] = [];
     timesMin: string[] = [];  
@@ -29,7 +31,8 @@ export class RestaurantFormComponent implements OnInit {
         
        this.restaurant.emit({
            value: this.restaurantForm.value
-       })
+       });
+       this._router.navigate(this.nav);
     }
 
     

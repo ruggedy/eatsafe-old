@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Menu, MenuFormComponent, RestaurantService } from '../../shared/index';
 
 @Component({
@@ -19,17 +20,19 @@ import { Menu, MenuFormComponent, RestaurantService } from '../../shared/index';
 export class MenuCreateComponent implements OnInit {
 
     init: Menu= new Menu(null, null, null);
-    constructor(private _rs: RestaurantService) { }
+    nav: string[] = ['restaurant', 'home']
+    constructor(private _router: Router, private _rs: RestaurantService) { }
 
     onMenuCreate(event: any) {
         this._rs.addMenu(event)
             .subscribe(
-                data => {
+                data => {    
                     this._rs.restaurant.menu.push(data);
                     console.log(this._rs.restaurant);
                 },
                 error => console.log(error)
             );
+            this._router.navigate(['restaurant', 'home'])
     }
 
     ngOnInit() { }

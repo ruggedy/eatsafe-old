@@ -9,8 +9,14 @@ export const RestaurantRoutes: RouterConfig = [
         component: RestaurantComponent,
         children: [
             {
+                path: '',
+                redirectTo: '/restaurant/home',
+                pathMatch: 'full'
+            },
+            {
                 path: 'home',
-                component: RestaurantHomeComponent
+                component: RestaurantHomeComponent,
+                canActivate: [AuthGuard, ProfileGuard]
             },
             {
                 path: 'profile/new',
@@ -30,6 +36,10 @@ export const RestaurantRoutes: RouterConfig = [
             {
                 path: 'menu',
                 component: MenuCreateComponent
+            },
+            {
+                path: '**',
+                redirectTo: '/restaurant/home'
             }
         ]
         
