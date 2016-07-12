@@ -21,15 +21,15 @@ export class ProfileShowComponent implements OnInit {
                 .subscribe(
                     data => {
                         this.restaurantPackage = this.rs.convertData(data);
-                        this.rs.restaurant = this.rs.convertData(data);
+                        this.rs.restaurant = data;
                         this.restaurant = this.restaurantPackage[0];
                         this.workingHours = this.restaurantPackage[1];
-                        console.log(this.restaurant);
+                        console.log(this.rs.restaurant);
                     },
                     error => console.log(error)
                 )
         } else {
-            this.restaurantPackage = this.rs.restaurant;
+            this.restaurantPackage = this.rs.convertData(this.rs.restaurant);
             this.restaurant = this.restaurantPackage[0];
             this.workingHours = this.restaurantPackage[1];
         }

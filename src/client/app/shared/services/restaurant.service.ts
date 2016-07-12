@@ -32,6 +32,17 @@ export class RestaurantService {
             .catch(this.errorHandler);
     }
 
+    addMenu (value: any): Observable<any> {
+        const body = JSON.stringify({value});
+        const headers = new Headers({ 'Content-Type':'application/json'});
+        const token = localStorage.getItem('token') ? '?token='+ localStorage.getItem('token') : '?token=invalid';
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post('<%= API_DEST%>'+'restaurant/menu'+token, body, options)
+            .map(this.extractData)
+            .catch(this.errorHandler)
+    }
+
     convertData(value: any) {
         let init: Restaurant = new Restaurant(null, null,null,null,null,null,null,null,null,null);
         let start: any[] = [];

@@ -4,8 +4,8 @@ var jwt = require('jsonwebtoken');
 var fs = require('fs');
 var path = require('path');
 var Restaurant = require('../models/restaurant');
+var Menu = require('../models/menu');
 var User = require('../models/user');
-
 
 router.use('/', function (req, res, next) {
     var cert = fs.readFileSync(path.join(__dirname, 'public.pem'));
@@ -23,19 +23,60 @@ router.use('/', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
     var decoded = jwt.decode(req.query.token);
-    Restaurant.findOne({user: decoded.user._id}, function (err, result) {
+    Restaurant.findOne({user: decoded.user._id})
+        .populate('menu')
+        .exec(function (err, result) {
+            if (err) {
+                return res.status(404).json({
+                    title: 'An error occured',
+                    error: err
+                });
+            }
+            return res.status(200).json({
+                message: 'Succesful',
+                obj: result
+            }); 
+        });
+                
+});
+
+router.post('/menu', function (req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    Restaurant.findById(decoded.user.restaurant, function (err, doc) {
+        var value = req.body.value.value;
+        var checked = req.body.value.checked;
         if (err) {
             return res.status(404).json({
                 title: 'An error occured',
                 error: err
             });
         }
-        return res.status(200).json({
-            message: 'Succesful',
-            obj: result
-        });    
-    })
-                
+        if (!doc) {
+            return res.status(404).json({
+                message: 'This Profile does not exist',
+                error: 'Invalid Profile'
+            });
+        }
+        var menu = new Menu({
+            name: value.name,
+            description: value.description,
+            menu: value.menu,
+            restaurant: doc._id 
+        });
+        for(var i = 0; i< checked.length; i++){
+            menu.allergens.push(checked[i]);
+        }
+        console.log(menu);
+
+        menu.save(function(err, result){
+            doc.menu.push(result);
+            doc.save();
+            return res.status(200).json({
+                message: 'all good',
+                obj: result
+            });
+        });
+    });
 });
 
 router.post('/', function (req, res, next) {

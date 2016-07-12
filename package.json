@@ -123,6 +123,7 @@
     "@angular2-material/card": "^2.0.0-alpha.6",
     "@angular2-material/checkbox": "^2.0.0-alpha.6",
     "@angular2-material/core": "^2.0.0-alpha.6",
+    "@angular2-material/list": "^2.0.0-alpha.6",
     "@angular2-material/radio": "^2.0.0-alpha.6",
     "angular2-jwt": "^0.1.16",
     "bcrypt": "^0.8.7",

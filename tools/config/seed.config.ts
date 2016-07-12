@@ -286,7 +286,8 @@ export class SeedConfig {
   materialComponents = [
     'card',
     'checkbox',
-    'radio'
+    'radio',
+    'list'
   ]
 
   /**

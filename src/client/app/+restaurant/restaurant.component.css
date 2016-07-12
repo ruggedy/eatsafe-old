@@ -1,8 +1,8 @@
 .router-container{
     padding-left: 10%;
     padding-top: 13%;
+    min-height: 100vh;
     background-color: #F7F7F7;
-    height: 80em;
 }
 
 .static-container {

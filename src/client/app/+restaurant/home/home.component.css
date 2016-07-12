@@ -1,0 +1,97 @@
+/*--- Menu-Details Table ---*/
+.menu-table {
+    margin-left: 4em;
+    margin-right: 2em;
+}
+
+table {
+    margin: 1em 0;
+    width: 100%;
+}
+
+md-card-header {
+    border-bottom: 1px solid #E6E9ED;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    color: var(--writing-blue);
+    font-size: 1.2em;
+}
+
+
+
+table th {
+    display: none;
+    font-size: 1em;
+    color: var(--writing-blue);
+}
+
+table td {
+    display: block;
+    font-size: .9em;
+    color: var(--writing-blue);
+}
+
+table td:first-child {
+    padding-top: .5em;
+}
+
+table td:last-child {
+    padding-bottom: .5em;
+}
+
+table td:before {
+    content: attr(data-th) ": ";
+    font-weight: bold;
+    width: 6.5em;
+    display: inline-block;
+}
+
+table th, table td {
+    text-align: left;
+}
+
+/*--- Numbers Card ----*/
+
+.menu-type-group .menu-type {
+    text-align: center;
+}
+
+.menu-type-group div .menu-type {
+    margin-left: 1em; 
+    margin-right: 1em;
+    font-size: 2em;
+}
+
+.menu-type-group>div:first-child .menu-type {
+    margin-left: 2em;
+    margin-right: 0; 
+}
+
+.menu-type-group>div:last-child .menu-type {
+    margin-right: 2em;
+    margin-left: 0; 
+}
+
+/*--- responsive ----*/
+
+@media (min-width: 480px) {
+    table td:before {
+        display: none;
+    }
+
+    table th, table td {
+        display: table-cell;
+        padding: .25em .5em;
+    }
+
+    table th:first-child, table td:first-child {
+        padding-left: 0;
+    }
+
+    table th:last-child, table td:last-child {
+        padding-right: 0;
+    }
+}
+
+
+

@@ -14,10 +14,10 @@ export class RestaurantSidebarComponent implements OnInit {
     
     sideBarOptions: RestaurantSideBar[] =[];
     ngOnInit() {
-        let home = new RestaurantSideBar('/something', 'fa-home');
+        let home = new RestaurantSideBar('home', 'fa-home');
         let statistics = new RestaurantSideBar('/something', 'fa-bar-chart');
-        let  menu = new RestaurantSideBar('/something', 'fa-cutlery');
-        let  settings = new RestaurantSideBar('/something', 'fa-cog');
+        let  menu = new RestaurantSideBar('menu', 'fa-cutlery');
+        let  settings = new RestaurantSideBar('profile', 'fa-cog');
         let  print = new RestaurantSideBar('/something', 'fa-print');
 
         this.sideBarOptions.push(home, menu, statistics, settings, print);

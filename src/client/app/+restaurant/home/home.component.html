@@ -1,0 +1,57 @@
+<div *ngIf="restaurant" class="row">
+    <div class="col-md-6">
+        <div class="menu-table">
+            <md-card>
+                <md-card-header>
+                    Latest Menu Items
+                </md-card-header>
+                <md-card-content>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>no of allergens</th>
+                            <th>type</th>
+                        </tr>
+                        <tr *ngFor="let rest of restaurant.menu">
+                            <td data-th="Name">{{rest.name}}</td>
+                            <td data-th="no of allergens">{{rest.allergens.length}}</td>
+                            <td data-th="type">{{rest.menu}}</td>
+                        </tr>
+                    </table>.
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row menu-type-group">
+            <div class="col-md-4">
+                <div class="menu-type">
+                    <md-card>
+                        {{starters}}
+                    </md-card>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-type">
+                    <md-card>
+                        {{mains}}
+                    </md-card>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-type">
+                    <md-card>
+                        {{dessert}}
+                    </md-card>
+                </div>
+            </div>
+            <div class="allergens-list">
+                <div class="col-md-12">
+                    <md-card ng-if="allergens" *ngFor="let allergens of allergens">
+                        {{allergens}}
+                    </md-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

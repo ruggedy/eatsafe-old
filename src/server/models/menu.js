@@ -5,6 +5,7 @@ var schema = new Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},
     menu: {type: String, required: true},
+    allergens:[{type: String}],
     restaurant: {type: Schema.Types.ObjectId, ref: 'Restaurant', required: true}
 });
 
