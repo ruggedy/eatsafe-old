@@ -5,7 +5,7 @@ import { AdminComponent } from './index';
 export const AdminRoutes: RouterConfig = [
 
 	{
-		path: 'admin', 
+		path: '<%=ADMIN_URL%>', 
 		component: AdminComponent
 	}
 ]

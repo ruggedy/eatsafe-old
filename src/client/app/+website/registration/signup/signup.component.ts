@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit {
                     localStorage.setItem('token', data.obj);
                     localStorage.setItem('userId', data.userId);
                     this._router.navigate(['restaurant', 'profile/new']);
+                    console.log("this works")
                 },
                 error => console.log(error)
             );

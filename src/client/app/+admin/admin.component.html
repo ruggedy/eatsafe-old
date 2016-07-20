@@ -50,6 +50,7 @@
                     </div>
                 </pagination-controls>
             </div>
+			<button  type="button" (click)="goHome()" md-raised-button><i class="fa fa-home"></i> Go Home </button>
 			<button *ngIf="showDelete" type="button" (click)="validateMultiUsers()" md-raised-button><i class="fa fa-wrench"></i> Validate </button>
             <button class="delete" *ngIf="showDelete"  type="button" (click)="removeMultiUsers()" md-raised-button><i class="fa fa-trash"></i> delete all </button>      
         </md-card-footer>

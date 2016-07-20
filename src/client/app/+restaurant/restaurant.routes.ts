@@ -4,7 +4,7 @@ import { RestaurantComponent, ProfileCreateComponent,
         ProfileEditComponent, ProfileShowComponent, 
         MenuCreateComponent, RestaurantHomeComponent,
         MenuShowComponent, MenuEditComponent, SingleMenuShowComponent } from './index';
-import { NewAccountGuard, AuthGuard, ProfileGuard } from '../shared/index';
+import { NewAccountGuard, AuthGuard, ProfileGuard, ValidatedGuard } from '../shared/index';
 
 export const RestaurantRoutes: RouterConfig = [
     {
@@ -19,7 +19,7 @@ export const RestaurantRoutes: RouterConfig = [
             {
                 path: 'home',
                 component: RestaurantHomeComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
             },
             {
                 path: 'profile/new',
@@ -29,33 +29,33 @@ export const RestaurantRoutes: RouterConfig = [
             {
                 path: 'profile/edit',
                 component: ProfileEditComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
             },
             {
                 path: 'profile',
                 component: ProfileShowComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
             },
             {
                 path: 'menu',
                 component: MenuShowComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
                 
             },
             {
                 path: 'menu/new',
                 component: MenuCreateComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
             },
             {
                 path: 'menu/edit',
                 component: MenuEditComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
             },
             {
                 path: 'menu/:id',
                 component: SingleMenuShowComponent,
-                canActivate: [AuthGuard, ProfileGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
                 
             },
             {

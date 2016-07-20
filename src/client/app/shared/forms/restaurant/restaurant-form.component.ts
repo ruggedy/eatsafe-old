@@ -19,6 +19,7 @@ export class RestaurantFormComponent implements OnInit {
     @Input() init: Restaurant = new Restaurant(null,null,null,null,null,null,null,null,null,null);
     @Input() timeConvert: any = null;
     @Input() nav: string[] = null;
+    @Input() showFull: boolean = false;
     @Output() restaurant = new EventEmitter();
     timesHour: string[] = [];
     timesMin: string[] = [];  
@@ -71,10 +72,10 @@ export class RestaurantFormComponent implements OnInit {
          this.restaurantForm = new FormGroup( {
         name: new FormControl(this.init.name? this.init.name : '', Validators.required),
         location: new FormGroup({
-            address1: new FormControl(this.init.address1? this.init.address1 : '', Validators.required),
+            address1: new FormControl(this.init.address1? this.init.address1 : ''),
             address2: new FormControl(this.init.address2? this.init.address2 : ''),
-            postcode: new FormControl(this.init.postcode? this.init.postcode : '', Validators.required),
-            city: new FormControl(this.init.city? this.init.city : '', Validators.required)
+            postcode: new FormControl(this.init.postcode? this.init.postcode : ''),
+            city: new FormControl(this.init.city? this.init.city : '')
         }),
         opening: new FormGroup({
             monday: new FormGroup({

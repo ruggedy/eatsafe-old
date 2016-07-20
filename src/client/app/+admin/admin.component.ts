@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/index';
 import { PaginatePipe, PaginationControlsCmp, PaginationService, IPaginationInstance } from 'ng2-pagination';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
@@ -23,7 +24,7 @@ export class AdminComponent implements OnInit {
 	checkedMenuItemsId: any[] = [];
     showDelete: boolean = null;
 
-	constructor(private _as: AuthService) { }
+	constructor(private _as: AuthService, private _router: Router) { }
 
 	validateChecked(menu: any){
         let index = this.checkedItems.indexOf(menu);
@@ -36,7 +37,7 @@ export class AdminComponent implements OnInit {
 
     updateChecked(user: any, event: any) {
         let index = this.checkedItems.indexOf(user);
-		let array: any[] = user.restaurant.menu;
+		let array: any[] = user.restaurant? user.restaurant.menu : [];
 
         if (event.checked) {
             if (index === -1) {
@@ -63,6 +64,10 @@ export class AdminComponent implements OnInit {
             this.showDelete = false;
         }
     }
+
+	goHome() {
+		this._router.navigate(['home']);
+	}
 
 	removeMultiUsers() {
         this._as.deleteMultipleUsers(this.checkedItems, this.checkedIds, this.checkedMenuItemsId)

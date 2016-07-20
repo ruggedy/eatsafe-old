@@ -12,6 +12,8 @@ import { NavbarComponent, ToolbarComponent, AuthService} from '../shared/index';
 })
 export class WebsiteComponent implements OnInit {
     isLoggedIn: boolean = false;
+    isAdmin: boolean = false;
+    isValidated: boolean = false;
     constructor(private _as: AuthService) { }
 
     logout(event:any) {
@@ -25,6 +27,8 @@ export class WebsiteComponent implements OnInit {
 
     ngOnInit() { 
         this.isLoggedIn = this._as.isLoggedIn();
+        this.isAdmin = this._as.isAdmin();
+        this.isValidated = this._as.isValidated();
     }
 
 }

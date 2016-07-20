@@ -3,7 +3,7 @@
         <h1>Restaurant Profile</h1>
         <label for="name"> <i class="fa fa-asterisk"></i> Name</label>
         <input type="text=" formControlName="name">
-        <div class="location" formGroupName='location' >
+        <div *ngIf="showFull" class="location" formGroupName='location' >
             <h2>Address</h2>
             <div class="form-group">
                 <label for="address1"><i class="fa fa-asterisk"></i>Address Line 1</label>
@@ -22,7 +22,7 @@
                 <input type="text" formControlName="city" value="">
             </div>
         </div>
-        <div class="opening" formGroupName="opening" >
+        <div *ngIf="showFull" class="opening" formGroupName="opening" >
             <h2>Opening and Closing Hours</h2>
             <!--formGroup Monday starts-->
             <div *ngFor="let day of section"  formGroupName="{{day}}" class="form-level">

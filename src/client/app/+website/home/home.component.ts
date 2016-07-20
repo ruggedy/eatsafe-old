@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 
-import { NameListService } from '../../shared/index';
+import { AuthService } from '../../shared/index';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -13,7 +13,14 @@ import { NameListService } from '../../shared/index';
   styleUrls: ['home.component.css'],
   directives: [REACTIVE_FORM_DIRECTIVES]
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+    isValidated: boolean = false;
+    isLoggedIn: boolean = false;
+    constructor(private _as: AuthService){}
 
+    ngOnInit () {
+      this.isValidated = this._as.isValidated();
+      this.isLoggedIn = this._as.isLoggedIn();
+    }
 
 }

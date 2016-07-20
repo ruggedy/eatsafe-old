@@ -244,5 +244,17 @@ md-card-header h2 {
     .test:nth-child(3n+3) li {
         margin-left: 1em;
         margin-right: 4em;
-    } 
+    }
+ 
+}
+
+@media only screen and  (max-width: 1200px) {
+    .buttons{
+        margin-left: 0;
+        padding-left: 20em;
+    }
+
+    .buttons button:first-of-type {
+        margin-left: 0;
+    }
 }

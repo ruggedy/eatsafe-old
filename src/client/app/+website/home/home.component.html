@@ -1,4 +1,7 @@
 <div class="custom-container">
+  <div *ngIf="isLoggedIn && !isValidated" class="validate-message">
+    Your Account is not Validated
+  </div>
   <div class="color-coating">
     <img src="./assets/coming-soon.png" alt="">
     <p>We are Currently Building a super awesome landing page, Businesses can sign up and try out our platform by following the sign up link above</p>

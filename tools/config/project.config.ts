@@ -13,6 +13,7 @@ export class ProjectConfig extends SeedConfig {
   FONTS_DEST = `${this.APP_DEST}/fonts`;
   
   API_DEST = 'http://localhost:3000/api/';
+  ADMIN_URL= 'V38LBNKBD2lDlhbcYWDk';
 
   FONTS_SRC = [
     'node_modules/font-awesome/fonts/**'

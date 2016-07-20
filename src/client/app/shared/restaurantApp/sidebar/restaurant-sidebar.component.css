@@ -147,3 +147,41 @@ span:last-of-type {
 .footer a:hover {
     color: #ecf0f1;
 }
+
+/*-- responsive --*/ 
+
+@media only screen and  (max-width: 980px ) {
+
+    nav {    
+        width: 80px;
+    }
+
+    nav ul {
+        margin-top: 10em;
+    }
+
+    nav ul li{
+        height: 4em;
+    }
+
+    nav ul li a i {
+        font-size: 2em;
+    }
+
+    nav ul li a i:nth-of-type(2),
+    nav ul li a p {
+        display: none;
+    }
+
+    .eat-safe p {
+        display: block;
+        line-height: 1em;
+        font-size: .9em;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        color: #EDEDED;
+    }
+    
+}

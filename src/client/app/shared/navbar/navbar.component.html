@@ -3,5 +3,7 @@
   <a *ngIf="!isLoggedIn"  [routerLink]="['/home/registration']">Sign Up</a>
   <a *ngIf="!isLoggedIn" [routerLink]="['/home/registration/signin']">Sign In</a>
   <a *ngIf="isLoggedIn" id="logout" class="logout" (click)="loggedOut($event)">Logout</a>
-  <a *ngIf="isLoggedIn" [routerLink]="['/restaurant']">Profile</a>
+  <a *ngIf="isLoggedIn && isValidated" [routerLink]="['/restaurant']">Profile</a>
+  <a *ngIf="isLoggedIn && !isValidated" class="disabled" >Profile</a>
+  <a *ngIf="isAdmin" [routerLink]="['/', adminUrl]">ADMIN</a>
 </nav>

@@ -309,11 +309,11 @@ router.post('/', function (req, res, next) {
         }
 
         restaurant.name = value.name;
-        restaurant.location.address = value.address1+', '+value.address2;
-        restaurant.location.postcode = value.postcode;
-        restaurant.location.city = value.city;
-        restaurant.contact.email = value.email;
-        restaurant.contact.phone = value.phone;
+        restaurant.location.address = value.address1? value.address1 +', '+value.address2 : ' ';
+        restaurant.location.postcode = value.postcode? value.postcode : ' ';
+        restaurant.location.city = value.city? value.city : ' ';
+        restaurant.contact.email = value.email? value.email : ' ';
+        restaurant.contact.phone = value.phone? value.phone : ' ';
         restaurant.user = doc;
 
         restaurant.save(function (err, result) {

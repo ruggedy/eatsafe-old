@@ -1,4 +1,5 @@
 .custom-container {
+    margin-top: 2em;
     padding-left: auto;
     padding-right: auto;
 }
@@ -37,6 +38,10 @@ md-card-footer button {
 	margin-top: 0;
     margin-bottom: 0;
 	margin-left: 0.5em;
+}
+
+md-card-footer button:first-of-type {
+    float: left;
 }
 
 md-card-footer button.delete {

@@ -8,6 +8,7 @@ export class DataFormatConversion {
 
     dataFormatConvert (formValue: any) {
         let value = formValue;
+        console.log(formValue);
         let days:string[] = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
         // changing the opening times to  seconds and pushing it to a start array in order
         let start1 = ((Number(value.opening.monday.openHour) * 3600) + (Number(value.opening.monday.openMin) * 60));

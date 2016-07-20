@@ -3,3 +3,4 @@ export * from './auth.service';
 export * from './auth.guard';
 export * from './profile.guard';
 export * from './newAccount.guard';
+export * from './validated.guard';

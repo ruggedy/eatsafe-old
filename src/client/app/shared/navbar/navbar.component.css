@@ -57,6 +57,11 @@ nav a:nth-child(2):hover{
   color: white;
 }
 
+.disabled{
+  cursor: not-allowed !important;
+  background-color: #e1e1e1;
+}
+
 .logout {
   background-color: #d9534f !important;
   border-color: #d9534f !important;

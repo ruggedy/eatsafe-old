@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
-import { Registration } from '../index';
+import { Registration, RestaurantService } from '../index';
 import { Observable } from 'rxjs/Observable';
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/Rx';
 
 @Injectable() 
 export class AuthService {
-    constructor(private _http: Http){}
+    constructor(private _http: Http ){}
 
     userName: string = null;
     users: any[] = null;
+    jwtHelper: JwtHelper = new JwtHelper();
 
     getUsers() {
         const token = localStorage.getItem('token') ? '?token='+ localStorage.getItem('token') : '?token=invalid';
@@ -81,6 +82,28 @@ export class AuthService {
     hasRestaurant() {
         if(localStorage.getItem('restaurant')) {
             return true;
+        }
+        return false;
+    }
+
+    isAdmin() {
+        let userInfo = localStorage.getItem('token')? this.jwtHelper.decodeToken(localStorage.getItem('token')) : null;
+
+        if(userInfo) {
+            if(userInfo.user.admin) {
+                return true
+            }
+        }
+        return false;
+    }
+
+    isValidated() {
+        let userInfo = localStorage.getItem('token')? this.jwtHelper.decodeToken(localStorage.getItem('token')) : null;
+
+        if(userInfo) {
+            if(userInfo.user.validated) {
+                return true
+            }
         }
         return false;
     }
