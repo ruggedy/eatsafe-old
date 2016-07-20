@@ -3,5 +3,8 @@ export * from './profileCreate/index';
 export * from './profileEdit/index';
 export * from './profileShow/index';
 export * from './menuCreate/index';
+export * from './menuEdit/index';
+export * from './menuShow/index';
+export * from './singleMenuShow/index';
 export * from './home/index';
 export * from './restaurant.routes'

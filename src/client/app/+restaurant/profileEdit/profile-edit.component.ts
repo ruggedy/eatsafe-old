@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, style, transition, animate  } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { Restaurant, RestaurantFormComponent, RestaurantService, TimeFormatConversion, DataFormatConversion } from '../../shared/index';
 
@@ -7,41 +7,65 @@ import { Restaurant, RestaurantFormComponent, RestaurantService, TimeFormatConve
     selector: 'sd-profile-edit',
     templateUrl: 'profile-edit.component.html',
     styleUrls: ['profile-edit.component.css'],
-    directives: [RestaurantFormComponent] 
+    directives: [RestaurantFormComponent],
+	animations: [
+        trigger('flyInOut', [
+            state('in', style({transform: 'translateX(0)'})),
+            transition('void => *', [
+                style({transform: 'translateX(-100%)'}),
+                animate('1s ease')
+            ]),
+            transition('* => void', [
+                style({transform: 'translateX(100%)'}),
+                animate('1s ease')
+            ])
+        ])
+    ] 
 })
-export class ProfileEditComponent implements OnInit {
-    constructor(public rs: RestaurantService, public tFC: TimeFormatConversion, public dFC: DataFormatConversion) { }
+export class ProfileEditComponent implements OnInit, OnDestroy {
+    constructor(public _rs: RestaurantService, public tFC: TimeFormatConversion, public dFC: DataFormatConversion) { }
     
-    restaurant: any;
+    restaurant: any = null;
     nav: string[] = ['restaurant', 'home'];
+    subscription: any = null;
 
     myRestaurant(event: any) {
-        this.restaurant = this.dFC.dataFormatConvert(event.value)
-        this.rs.addRestaurant(this.restaurant)
+        this.restaurant = this.dFC.dataFormatConvert(event.value);
+        var restaurantId = localStorage.getItem('restaurant');
+        this._rs.updateRestaurant(this.restaurant, restaurantId)
             .subscribe(
-                response => console.log(response),
+                response => {
+                    this._rs.restaurantChanged(response);
+                },
                 error => console.log(error)
             )
     }
 
 
-    ngOnInit() { 
-        
+    getDetails() {
+         this._rs.getRestaurant()
+            .subscribe(
+                data => {
+                    this.restaurant = this._rs.convertData(data);
+                    this._rs.restaurantChanged(data)
+                }
+            )
+     }
 
-        if (this.rs.restaurant) {
-            this.restaurant = this.rs.restaurant;
-        } else {
-            this.rs.getRestaurant()
-                .subscribe(
-                    response => {
-                        console.log(response);
-                        let value = this.rs.convertData(response); 
-                        this.rs.restaurant = value;
-                        this.restaurant = value;
-                    },
-                    error => console.log(error)
-                )
-        }
+     ngOnDestroy() {
+         this.subscription.unsubscribe();
+     }
+
+    ngOnInit() {
+      this.subscription =  this._rs.observableRestaurant$.subscribe(
+            (item:any) => {
+                if(!item) {
+                    this.getDetails();
+                } else {
+                    this.restaurant = this._rs.convertData(item);
+                }
+            }
+        )   
     }
 
 }

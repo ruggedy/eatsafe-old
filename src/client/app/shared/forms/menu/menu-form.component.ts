@@ -62,7 +62,7 @@ export class MenuFormComponent implements OnInit {
         }
     }
     onSubmit() {
-        if(this.checked.length > 1 && this.menuForm.valid) {
+        if(this.checked.length > 0 && this.menuForm.valid) {
             this.value.emit({
                 value: this.menuForm.value,
                 checked: this.checked

@@ -2,13 +2,14 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { REACTIVE_FORM_DIRECTIVES, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Restaurant, DataFormatConversion, TimeFormatConversion, FormValidator } from '../../index';
+import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 
 @Component({
     moduleId: module.id,
     selector: 'sd-restaurant-form',
     templateUrl: 'restaurant-form.component.html',
     styleUrls: ['restaurant-form.component.css'],
-    directives: [REACTIVE_FORM_DIRECTIVES]
+    directives: [REACTIVE_FORM_DIRECTIVES, MD_BUTTON_DIRECTIVES]
 })
 export class RestaurantFormComponent implements OnInit {
     
@@ -17,7 +18,7 @@ export class RestaurantFormComponent implements OnInit {
     formActive: boolean = true;
     @Input() init: Restaurant = new Restaurant(null,null,null,null,null,null,null,null,null,null);
     @Input() timeConvert: any = null;
-    @Input() nav: string[] = ['home']
+    @Input() nav: string[] = null;
     @Output() restaurant = new EventEmitter();
     timesHour: string[] = [];
     timesMin: string[] = [];  
@@ -71,7 +72,7 @@ export class RestaurantFormComponent implements OnInit {
         name: new FormControl(this.init.name? this.init.name : '', Validators.required),
         location: new FormGroup({
             address1: new FormControl(this.init.address1? this.init.address1 : '', Validators.required),
-            address2: new FormControl(this.init.address2? this.init.address2 : '', Validators.required),
+            address2: new FormControl(this.init.address2? this.init.address2 : ''),
             postcode: new FormControl(this.init.postcode? this.init.postcode : '', Validators.required),
             city: new FormControl(this.init.city? this.init.city : '', Validators.required)
         }),

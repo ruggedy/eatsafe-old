@@ -6,7 +6,7 @@ export class TimeFormatConversion {
 
     constructor(){}
 
-    timeFormatConvert(start:number[], end:number[]) {
+    timeFormatConvert(start:number[], end:number[], closed:any[]) {
         /* DO THE MATHS FUNCTION TO CONVERT TIME FORM 
         /* SECONDS TO 24HR FORMAT
         */
@@ -60,6 +60,7 @@ export class TimeFormatConversion {
                 }
                 time['day'] = days[i];
                 time['color'] = color[i];
+                time['closed'] = closed[i];
                 final[i]= time; 
                 
             }

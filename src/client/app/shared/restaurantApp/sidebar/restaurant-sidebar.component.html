@@ -1,9 +1,31 @@
 <nav>
-    <ul>
+    <div class="eat-safe">
+        <div class="logo-circle">
+            <a [routerLink]="['/']">
+                <img src="./assets/logo.png" alt="Eat Safe Logo">
+            </a>
+        </div>
+        <p>Eat Safe</p>
+    </div>
+    <div class="user-profile">
+        <div class="user-circle">
+            <img src="./assets/filler.jpg" alt="User Picture">
+        </div>
+        <div class="user-info">
+            <span>Welcome,</span>
+            <span *ngIf="name"> {{name}} </span>
+        </div>
+    </div>
+    <ul class="links">
         <li *ngFor="let options of sideBarOptions" >
             <a [routerLink]="[options.navLink]">
                 <i class="fa {{options.navIcon}}"></i>
+                <p>{{options.navLink}}</p>
+                <i class="fa fa-chevron-right"></i>
             </a>
         </li>
     </ul>
+    <div class="footer">
+        <a id="logout" (click)="logout($event)" ><i id="logout" class="fa fa-power-off"></i></a>
+    </div>
 </nav>

@@ -29,12 +29,18 @@ export class ProjectConfig extends SeedConfig {
         main: 'angular2-jwt.js',
         defaultExtension: 'js'
       } 
+    this.SYSTEM_BUILDER_CONFIG.packages['ng2-pagination'] = 
+      {
+        main: 'dist/ng2-pagination.js',
+        defaultExtension: 'js'
+      } 
     // Add third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
       {src: 'font-awesome/css/font-awesome.min.css', inject: true},
       {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true},
-      {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'}
+      {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
+      {src: 'web-animations-js/web-animations.min.js', inject: 'libs'}
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];

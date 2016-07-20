@@ -30,7 +30,7 @@ md-card-content {
 }
 
 .my-grid {
-    width: 30%;
+    width: 48%;
 }
 
 .my-grid:first-of-type {
@@ -107,6 +107,27 @@ li .day {
 
 /*--- Contact Info ----*/
 
+
+/*--- edit button -- */
+
+.container-fluid > button {
+    color: white;
+    height: 2.5em;
+    vertical-align: top;
+    font-weight: 600;
+    font-size: .9em;
+    background-color: var(--normal-color);
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.container-fluid > button i {
+    margin-right: .5em;
+}
+
+.time1.closed {
+    color: #d9534f;
+}
 
 
 

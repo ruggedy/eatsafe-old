@@ -11,19 +11,19 @@ import { RegistrationFormComponent, AuthService, RegInput} from '../../../shared
 })
 export class SignInComponent implements OnInit {
     constructor(private _authService: AuthService, private _router: Router) { }
-
+    
+    error: boolean = false;
     formActive: boolean = true;
     input:RegInput = new RegInput('Sign In', `Don't Already Have An Account`, 'Sign Up', false, '#', 'Login');
-    
 
     onCreate(event:any){
         console.log(event.value);
         this._authService.signin(event.value)
             .subscribe(
                 data => {
-                    console.log(data);
                     localStorage.setItem('token', data.obj);
                     localStorage.setItem('userId', data.userId);
+                    this.error = false;
                     if(data.restaurantId) {
                         localStorage.setItem('restaurant', data.restaurantId);
                         this._router.navigate(['restaurant', 'home']); 
@@ -32,7 +32,12 @@ export class SignInComponent implements OnInit {
                     this._router.navigate(['restaurant', 'profile/new']);
                     return
                 },
-                error => console.log(error)
+                error => {
+                    if(error) {
+                        return this.error = true
+                    }
+                    return
+                }
             );
     }
     ngOnInit() {

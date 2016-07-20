@@ -27,6 +27,11 @@ input {
     margin-bottom: 1.2em;
 }
 
+.form-div .form .form-header+div>p {
+    color: #d9534f;
+    text-align: center;
+}
+
 .form-div .form .form-header h2 {
     position: relative;
     text-align: center;
@@ -37,7 +42,7 @@ input {
 .form-div .form .form-header h2::before {
     position: absolute;
     content: '';
-    bottom: -0.5em;
+    bottom: -0.2em;
     left: 50%;
     width: 2em;
     transform: translateX(-50%);
@@ -60,10 +65,15 @@ input {
     margin-left: 10%;
     margin-top: 1.5em;
     height: 2.5em;
+    display: inline-block;
 }
 
 .form-div .form .form-body .input-control:first-of-type {
     margin-top: 0;
+}
+
+.matchingpasswords {
+    margin-top: 1.5em;
 }
 
 .form-div .form .form-body .input-control > span  {
@@ -78,6 +88,8 @@ input {
     text-align: center;
     color: var(--placeholder);
 }
+
+
 
 .form-div .form .form-body .input-control input {
     height: 100%;
@@ -140,6 +152,22 @@ input {
 .form-div .form .form-body button:hover,
 .form-div .form .form-body button:active{
     background-color: var(--dark-color);
+}
+
+/*-- validations - css ---*/
+
+.input-control + p {
+    display: inline-block;
+    font-size: .8em;
+    color: var(--normal-color);
+}
+
+.username-valid {
+    text-align: center;
+    padding: .5em 0 0;
+    color: #d9534f;
+    font-size: .8em;
+    z-index: 4;
 }
 
 

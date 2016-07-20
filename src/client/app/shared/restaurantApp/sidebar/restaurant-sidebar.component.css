@@ -1,33 +1,149 @@
 nav {
-    margin-top: 15vh;
-    height: 85vh;
+    height: 100vh;
     position: fixed;
-    background-color: #FCFCFC;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
-    width: 10%;
+    background-color: var(--normal-color);
+    width: 230px;
     z-index: 500;
 }
 
 nav ul {
-    height: 100%;
+    margin-top: 7em;
+    display: block;
 }
 
 nav ul li {
     width: 100%;
-    height: 20%;
-    border-bottom: 1px solid #E8EAEB;
+    height: 2em;
+    padding: .8em .9em;
 }
 nav ul li a {
     display: block;
     position: relative;
     width: 100%;
     height: 100%;
-    color: var(--normal-color);
+    color: #EDEDED;
+    text-decoration: none;
 }
 nav ul li a i {
+    font-size: 1.1em;
+    display: inline-block;
+}
+
+nav ul li a i:nth-of-type(2) {
+    font-size: .8em;
+    float: right;
+    display: inline-block;
+    margin-top: .7em;
+    opacity: .8;
+}
+nav ul li a p {
+    font-size: .9em;
+    display: inline-block;
+    margin-left: 1em;
+    font-weight: 500;
+}
+
+.logo-circle {
+    display: inline-block;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    background-color: #EDEDED;
+    position: relative
+}
+
+.logo-circle a img {
+    width: 80%;
     position: absolute;
-    top: 30%;
-    left: 30%;
-    transform: translate(-50% -50%);
-    font-size: 3.5em;
+    top: 50%;
+    left:  50%;
+    transform: translate(-50%, -50%);
+    -webkit-transition: transform 300ms  ease, top 300ms  ease, left 300ms  ease;
+    -moz-transition: transform 300ms  ease, top 300ms  ease, left 300ms  ease;
+    transition: transform 300ms  ease, top 300ms  ease, left 300ms  ease;
+}
+
+.logo-circle a img:hover {
+    transform: scale(1.1);
+    top: 10%;
+    left: 10%;
+}
+
+.eat-safe {
+    padding: .6em .6em 0;
+    position: relative;
+    margin-bottom: 3em;
+}
+.eat-safe p {
+    display: inline-block;
+    line-height: 2em;
+    font-size: 1.5em;
+    position: absolute;
+    left: 3em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #EDEDED;
+}
+
+/*user-section*/
+
+.user-profile {
+    margin-bottom: 2em;
+    padding-left: .5em;
+}
+
+.user-circle {
+    float: left;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    background-color: #EDEDED;
+    position: relative;
+    overflow: hidden;
+}
+
+.user-circle img{
+    position: absolute;
+    left: -0.2em;
+    bottom: -0.2em;
+    width: 150%;
+}
+.user-info {
+    float: left;
+    margin-left: .7em;
+}
+
+span {
+    display: block;
+    font-size: .7em;
+    color: #ecf0f1;
+    padding-top: .5em;
+}
+
+span:last-of-type {
+    font-size: .9em;
+    color: white;
+}
+
+/*--- side-bar footer ---*/
+
+.footer {
+    position: absolute;
+    bottom: 0.05em;
+    width: 100%;
+    height: 2em;
+    display: block;
+    background-color: var(--dark-color);
+    padding-right: 1em;
+}
+
+.footer a {
+    cursor: pointer;
+    float: right;
+    color: white;
+    font-size: 1.5em;
+}
+
+.footer a:hover {
+    color: #ecf0f1;
 }

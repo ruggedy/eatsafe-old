@@ -2,11 +2,13 @@ import { provideRouter, RouterConfig } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { RestaurantRoutes } from './+restaurant/index';
 import { WebsiteRoutes } from './+website/index';
-import { ProfileGuard ,AuthGuard, AuthService, RestaurantService, TimeFormatConversion } from './shared/index';
+import { AdminRoutes } from './+admin/index';
+import { NewAccountGuard, ProfileGuard ,AuthGuard, AuthService, RestaurantService, TimeFormatConversion } from './shared/index';
 
 const routes: RouterConfig = [
   ...WebsiteRoutes,
   ...RestaurantRoutes,
+  ...AdminRoutes,
   {
         path: '**',
         redirectTo: 'home',
@@ -15,5 +17,5 @@ const routes: RouterConfig = [
 
 export const APP_ROUTER_PROVIDERS = [
   provideRouter(routes),
-  [AuthGuard, AuthService, ProfileGuard, RestaurantService, TimeFormatConversion]
+  [NewAccountGuard, AuthGuard, AuthService, ProfileGuard, RestaurantService, TimeFormatConversion]
 ];

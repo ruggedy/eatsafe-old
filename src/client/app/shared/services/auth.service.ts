@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Registration } from '../index';
 import { Observable } from 'rxjs/Observable';
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
@@ -8,6 +8,42 @@ import 'rxjs/Rx';
 @Injectable() 
 export class AuthService {
     constructor(private _http: Http){}
+
+    userName: string = null;
+    users: any[] = null;
+
+    getUsers() {
+        const token = localStorage.getItem('token') ? '?token='+ localStorage.getItem('token') : '?token=invalid';
+        return this._http.get('<%= API_DEST%>'+'user/admin'+token)
+            .map(this.extractData)
+            .catch(this.errorHandler);
+    }
+
+    deleteMultipleUsers(value: any, userIds: any, menuIds: any) : Observable<any> {
+        for (let i = 0; i< value.length; i++) {
+            this.users.splice(this.users.indexOf(value[i]), 1)
+        }
+        const token = localStorage.getItem('token') ? '?token='+ localStorage.getItem('token') : '';
+        const body = JSON.stringify({"userData" : userIds, "menuData": menuIds });
+        console.log(body);
+        return this._http.delete('<%= API_DEST%>'+'user/admin/' + body + token)
+            .map(this.extractData)
+            .catch(this.errorHandler)      
+    }
+
+    validateMultipleUsers(value: any, userIds: any) : Observable<any> {
+        for (let i = 0; i< value.length; i++) {
+            this.users.splice(this.users.indexOf(value[i]), 1)
+        }
+        const body = JSON.stringify({value});
+        const ids = JSON.stringify({"data" : userIds})
+        const headers = new Headers({ 'Content-Type':'application/json'});
+        const token = localStorage.getItem('token') ? '?token='+ localStorage.getItem('token') : '?token=invalid';
+        let options = new RequestOptions({headers: headers});
+        return this._http.patch('<%= API_DEST%>'+'user/admin/' + ids + token, body, options)
+            .map(this.extractData)
+            .catch(this.errorHandler)      
+    }
     
     signup(user: Registration) {
         const body = JSON.stringify(user);
@@ -48,4 +84,14 @@ export class AuthService {
         }
         return false;
     }
+
+    private extractData(res: Response) {
+       let body = res.json();
+       return body.obj || body.message || { };
+   }
+
+   private errorHandler(error:any) {
+       let errMsg = error
+       return Observable.throw(errMsg);
+   }
 }

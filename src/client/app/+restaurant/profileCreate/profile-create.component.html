@@ -1,1 +1,3 @@
-<sd-restaurant-form [init]="init" [timeConvert]="time" [nav]="nav" (restaurant)='myRestaurant($event)' ></sd-restaurant-form>
+<div @flyInOut="'in'" class="">
+	<sd-restaurant-form @flyInOut="'in'" [init]="init" [timeConvert]="time" [nav]="nav" (restaurant)='myRestaurant($event)' ></sd-restaurant-form>	
+</div>

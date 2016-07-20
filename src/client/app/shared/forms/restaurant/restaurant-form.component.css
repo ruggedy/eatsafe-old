@@ -105,7 +105,21 @@ h1, h2 {
 }
 
 .button button {
-    width: 10em;
+    color: white;
+    height: 2.5em;
+    font-weight: 600;
+    font-size: .9em;
+    background-color: var(--normal-color);
+	vertical-align: middle;
+}
+
+
+/*--- asteriks ---*/
+
+i{
+    font-size: .5em;
+    color: #d9534f;
+    vertical-align: middle;
 }
 
 

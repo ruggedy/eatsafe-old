@@ -1,5 +1,7 @@
 <nav>
   <a [routerLink]="['/']">HOME</a>
-  <a [routerLink]="['/home/registration']">Sign Up</a>
-  <a [routerLink]="['/home/registration/signin']">Sign In</a>
+  <a *ngIf="!isLoggedIn"  [routerLink]="['/home/registration']">Sign Up</a>
+  <a *ngIf="!isLoggedIn" [routerLink]="['/home/registration/signin']">Sign In</a>
+  <a *ngIf="isLoggedIn" id="logout" class="logout" (click)="loggedOut($event)">Logout</a>
+  <a *ngIf="isLoggedIn" [routerLink]="['/restaurant']">Profile</a>
 </nav>

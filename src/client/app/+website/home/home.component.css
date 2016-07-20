@@ -1,28 +1,25 @@
-:host {
+
+.custom-container {
+  height: 100vh;
+}
+
+.color-coating {
   display: block;
-  padding: 0 16px;
+  height: 100vh;
+  padding-right: 30em;
 }
 
-input {
-  width: 250px;
+.color-coating img {
+  height: 30em;
+  width: auto;
+  float: right;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0 0 0 8px;
+.color-coating p {
+  padding-top: 15em;
+  padding-left: 5em;
+  font-size: 2em;
+  line-height: 2;
+  color: var(--dark-color);
 }
 
-.color-1 {
-  background-color: var(--normal-color);
-  width: 2em;
-}
-
-.color-2 {
-  background-color: var(--dark-color);
-  width: 2em;
-}
-
-.color-3 {
-  background-color: var(--light-color);
-  width: 2em;
-}

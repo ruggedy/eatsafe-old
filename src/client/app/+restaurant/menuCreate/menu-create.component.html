@@ -1,1 +1,3 @@
-<sd-menu-form [init]="init" (value)="onMenuCreate($event)" ></sd-menu-form>
+<div @flyInOut="'in'" class="">
+	<sd-menu-form  [init]="init" (value)="onMenuCreate($event)" ></sd-menu-form>
+</div>

@@ -1,9 +1,6 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ROUTER_DIRECTIVES} from '@angular/router';
 
-/**
- * This class represents the navigation bar component.
- */
 @Component({
   moduleId: module.id,
   selector: 'sd-navbar',
@@ -11,4 +8,18 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   styleUrls: ['navbar.component.css'],
   directives: [ROUTER_DIRECTIVES]
 })
-export class NavbarComponent {}
+export class NavbarComponent implements OnInit {
+  
+  @Input() isLoggedIn: boolean = false;
+  @Output() logout = new EventEmitter();
+
+  loggedOut(event: any){
+	  this.logout.emit({
+		  value: event.target.id
+	  }); 
+  }
+
+  ngOnInit() { }
+
+}
+

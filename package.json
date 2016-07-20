@@ -120,12 +120,14 @@
     "@angular/platform-browser": "2.0.0-rc.4",
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
     "@angular/router": "3.0.0-beta.2",
+    "@angular2-material/button": "^2.0.0-alpha.6",
     "@angular2-material/card": "^2.0.0-alpha.6",
     "@angular2-material/checkbox": "^2.0.0-alpha.6",
     "@angular2-material/core": "^2.0.0-alpha.6",
     "@angular2-material/list": "^2.0.0-alpha.6",
     "@angular2-material/radio": "^2.0.0-alpha.6",
     "angular2-jwt": "^0.1.16",
+    "async": "^1.5.2",
     "bcrypt": "^0.8.7",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
@@ -143,9 +145,11 @@
     "mongoose": "^4.5.0",
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
+    "ng2-pagination": "^0.3.5",
     "path": "^0.12.7",
     "rxjs": "5.0.0-beta.6",
     "systemjs": "0.19.27",
+    "web-animations-js": "^2.2.1",
     "zone.js": "^0.6.12"
   }
 }

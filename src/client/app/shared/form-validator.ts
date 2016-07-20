@@ -1,4 +1,4 @@
-import {FormControl, AbstractControl} from '@angular/forms';
+import {FormControl, AbstractControl, FormGroup} from '@angular/forms';
 import {Injector, ReflectiveInjector} from '@angular/core';
 import { Http, HTTP_PROVIDERS,Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -25,7 +25,7 @@ function checkUser(control: FormControl, source: string) : Observable<IFormValid
                 },
                 error => {
                     let state = error.json().state;
-                    let reason = 'Username is already taken';
+                    let reason = 'usernameTaken';
                     obs.next({[reason] : !state});
                     obs.complete();
                 }
@@ -46,5 +46,26 @@ export class FormValidator {
 
     static checkUsername(control: FormControl) {
         return checkUser(control, 'username');
+    }
+
+   static matchPasswords(group: FormGroup){
+        let password = group.controls['password'];
+        let confirm = group.controls['confirmPassword'];
+
+        if (password.pristine || confirm.pristine) {
+            return null;
+        }
+
+        group.markAsTouched();
+
+        if (password.value === confirm.value) {
+            return null;
+        }
+
+        return {
+            'isValid': false
+        }
+
+
     }
 }

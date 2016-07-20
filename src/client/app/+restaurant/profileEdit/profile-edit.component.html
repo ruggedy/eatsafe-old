@@ -1,1 +1,4 @@
-<sd-restaurant-form [init]="restaurant[0]" [timeConvert]="restaurant[1]" [nav]="nav" (restaurant)='myRestaurant($event)' ></sd-restaurant-form>
+
+<div @flyInOut="'in'" class="">
+	<sd-restaurant-form  *ngIf="restaurant"  [init]="restaurant[0]" [timeConvert]="restaurant[1]" [nav]="nav" (restaurant)='myRestaurant($event)' ></sd-restaurant-form>
+</div>

@@ -287,7 +287,8 @@ export class SeedConfig {
     'card',
     'checkbox',
     'radio',
-    'list'
+    'list',
+    'button'
   ]
 
   /**

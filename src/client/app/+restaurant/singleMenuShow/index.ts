@@ -1,0 +1,1 @@
+export * from './single-menu-show.component';

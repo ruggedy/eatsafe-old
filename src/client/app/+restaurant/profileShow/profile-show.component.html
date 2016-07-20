@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div @flyInOut="'in'" class="container-fluid">
     <div class="row">
         <div class="my-grid">
             <md-card> 
@@ -10,8 +10,11 @@
                                 <div class="col-md-7 day " >
                                     {{working.day.substr(0,1).toUpperCase() + working.day.slice(1)}}
                                 </div>
-                                <div class="col-md-offset-1 col-md-4 time1">
+                                <div *ngIf="!working.closed"  class="col-md-offset-1 col-md-4 time1">
                                     {{working.startHour}}:{{working.startMin}} - {{working.endHour}}:{{working.endMin}}
+                                </div>
+                                <div *ngIf="working.closed"  class="col-md-offset-1 col-md-4 time1 closed">
+                                    closed
                                 </div>
                             </div>
                         </li>
@@ -47,6 +50,7 @@
             </div>
         </div>
     </div>
+    <button type="button" (click)="editProfile()" md-raised-button><i class="fa fa-pencil-square-o"></i>Edit</button>
 </div>
 
             

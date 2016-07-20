@@ -1,7 +1,10 @@
-<div class="static-container">
-    <sd-restaurant-header></sd-restaurant-header>
-    <sd-restaurant-sidebar></sd-restaurant-sidebar>
-</div>
-<div class="router-container">
-    <router-outlet></router-outlet>
+<div class="full-container">
+    <div class="static-container">
+        <sd-restaurant-sidebar *ngIf="hasRestaurant"  [name]="name" ></sd-restaurant-sidebar>
+        <sd-restaurant-header></sd-restaurant-header>
+    </div>
+    <div class="router-container">
+        <router-outlet></router-outlet>
+    </div>
+
 </div>

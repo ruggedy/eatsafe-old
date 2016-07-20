@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Menu, MenuFormComponent, RestaurantService } from '../../shared/index';
@@ -8,31 +8,36 @@ import { Menu, MenuFormComponent, RestaurantService } from '../../shared/index';
     selector: 'sd-menu-create',
     templateUrl: 'menu-create.component.html',
     styleUrls: ['menu-create.component.css'],
-    directives: [MenuFormComponent, REACTIVE_FORM_DIRECTIVES] 
+    directives: [MenuFormComponent, REACTIVE_FORM_DIRECTIVES],
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({transform: 'translateX(0)'})),
+            transition('void => *', [
+                style({transform: 'translateX(-100%)'}),
+                animate('1s ease')
+            ]),
+            transition('* => void', [
+                style({transform: 'translateX(100%)'}),
+                animate('1s ease')
+            ])
+        ])
+    ] 
 })
 
-
-@Component({
-    moduleId: module.id,
-    selector: 'sd-menu-create',
-    templateUrl: 'menu-create.component.html'
-})
 export class MenuCreateComponent implements OnInit {
 
     init: Menu= new Menu(null, null, null);
-    nav: string[] = ['restaurant', 'home']
     constructor(private _router: Router, private _rs: RestaurantService) { }
 
     onMenuCreate(event: any) {
         this._rs.addMenu(event)
             .subscribe(
                 data => {    
-                    this._rs.restaurant.menu.push(data);
-                    console.log(this._rs.restaurant);
+                    this._rs.menuChanged(data);
                 },
                 error => console.log(error)
             );
-            this._router.navigate(['restaurant', 'home'])
+            this._router.navigate(['restaurant', 'menu'])
     }
 
     ngOnInit() { }

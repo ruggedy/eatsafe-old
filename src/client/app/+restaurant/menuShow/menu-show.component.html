@@ -1,0 +1,61 @@
+<div @flyInOut="'in'" *ngIf="menu"  class="custom-container">
+    <md-card>
+        <md-card-title>
+            <h2>Menu Table</h2>
+        </md-card-title>
+        <button type="button" (click)="gotoNew()" md-raised-button> Add New <i class="fa fa-plus"></i></button>
+        <md-card-content>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>No of Allergens</th>
+                        <th>Type</th>
+                        <th>Added</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of menu | paginate: { itemsPerPage: 10, 
+                                                               currentPage: pageNumber
+                                                               }" >
+                        <td><md-checkbox [checked]="validateChecked(item)" (change)="updateChecked(item, $event)" ></md-checkbox></td>
+                        <td><a [routerLink]="['/restaurant/menu/', item._id]">{{item.name}}</a></td>
+                        <td>{{item.allergens.length}}</td>
+                        <td>{{item.menu}}</td>
+                        <td></td>
+                        <td><a (click)=editMenu(item)><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td><a (click)=removeMenu(item)><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-card-content>
+        <md-card-footer>
+            <div class="pagination-container">
+                <pagination-controls #pagination (pageChange)="pageChanged($event)" >
+                    <div class="custom-pagination">
+                        <div class="pagination-previous" [class.disabled]="pagination.isFirstPage()" >
+                            <a  (click)="pagination.isFirstPage()? null : pagination.previous()"> <i class="fa fa-arrow-left"></i></a>
+                        </div>
+
+                        <div class="pages" *ngFor="let page of pagination.pages" [class.current] = "pagination.getCurrent() === page.value">
+                            <a (click)="pagination.setCurrent(page.value)" *ngIf="pagination.getCurrent() !== page.value">
+                                <span>{{page.label}}</span>
+                            </a>
+                            <div *ngIf="pagination.getCurrent() === page.value">
+                                <span>{{ page.label }}</span>
+                            </div>
+                        </div>
+
+                        <div class="pagination-next" [class.disabled]="pagination.isLastPage()" *ngIf="pagination.directionLinks">
+                            <a  (click)="pagination.isLastPage()? null : pagination.next()"> <i class="fa fa-arrow-right"></i> </a>
+                        </div>
+                    </div>
+                </pagination-controls>
+            </div>
+            <button *ngIf="showDelete"  type="button" (click)="removeMultiMenu()" md-raised-button><i class="fa fa-trash"></i> delete all </button>
+        </md-card-footer>
+    </md-card>
+</div>

@@ -1,18 +1,6 @@
-<p>
-  Howdy! Here's a list of awesome computer scientists.
-  Do you know any others? Add to the list yourself.
-</p>
-
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
-
-
-<ul>
-  <li *ngFor="let name of nameListService.get() | async">{{name}}</li>
-</ul>
-
-<div class="color-1"> weqwe</div>
-<div class="color-2"> weqw </div>
-<div class="color-3"> weqwe </div>
+<div class="custom-container">
+  <div class="color-coating">
+    <img src="./assets/coming-soon.png" alt="">
+    <p>We are Currently Building a super awesome landing page, Businesses can sign up and try out our platform by following the sign up link above</p>
+  </div>
+</div>

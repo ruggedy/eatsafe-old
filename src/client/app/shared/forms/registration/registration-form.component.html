@@ -4,24 +4,46 @@
             <h2>{{details.header}} </h2>
             <p> {{details.detail}} <a href="#">{{details.signType}} </a></p>
         </div>
+        <div *ngIf="loginError" >
+            <p>Invalid Login Details</p>
+        </div>
         <div class="form-body">
             <form *ngIf="formActive" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
                 <div class="input-control">
-                    <input type="text" name="username" value="" formControlName="username" placeholder="Username">
+                    <input type="text" name="username" value="" [formControl]="registrationForm.controls.username" placeholder="Username">
                     <span class="fa fa-user"></span>
                 </div>
-                <div class="input-control">
-                    <input type="password" name="password" value="" formControlName="password" placeholder="Password">
-                    <span class="fa fa-lock"></span>
+                <p *ngIf="registrationForm.controls.username.dirty && registrationForm.controls.username.valid && details.signShow "><i class="fa fa-check"></i></p>
+                <div *ngIf="registrationForm.controls.username.dirty && details.signShow "  class="username-valid">
+                    <p *ngIf="registrationForm.controls.username.dirty && registrationForm.controls.username.errors && details.signShow "><i class="fa fa-times"></i>
+                     {{ registrationForm.controls.username.errors.usernameTaken? 'Username is Taken' : 
+                        registrationForm.controls.username.errors.minlength? 'Minimum length is 4' : 
+                        registrationForm.controls.username.errors.maxlength? 'Maximum length is 100' : null  
+                     }}
+                    </p>
                 </div>
-                <div class="change" *ngIf="details.signShow" >
+                <div [formGroup]="registrationForm.controls.matchingPassword"  class="matchingpasswords">
                     <div class="input-control">
-                        <input type="password" name="confirmPassword" value="" formControlName="confirmPassword" placeholder="Confirm Password">
+                        <input type="password" name="password" value="" [formControl]="registrationForm.controls.matchingPassword.controls.password" placeholder="Password">
                         <span class="fa fa-lock"></span>
                     </div>
-                    <span>By creating an account, you agree to our <a href="#">Terms and Conditions</a></span>
-                </div>      
-                <button type="submit">{{details.button}} </button>
+                    <p *ngIf="registrationForm.controls.matchingPassword.controls.password.dirty && registrationForm.controls.matchingPassword.controls.password.valid && details.signShow "><i class="fa fa-check"></i></p>
+                    <div class="change" *ngIf="details.signShow" >
+                        <div class="input-control">
+                            <input type="password" name="confirmPassword" value="" [formControl]="registrationForm.controls.matchingPassword.controls.confirmPassword" placeholder="Confirm Password">
+                            <span class="fa fa-lock"></span>
+                        </div>
+                        <p *ngIf="registrationForm.controls.matchingPassword.valid && registrationForm.controls.matchingPassword.controls.confirmPassword.dirty && details.signShow "><i class="fa fa-check"></i></p>
+                        <div *ngIf="registrationForm.controls.matchingPassword.controls.confirmPassword.dirty && registrationForm.controls.matchingPassword.errors && details.signShow "  class="username-valid">
+                            <p><i class="fa fa-times"></i>
+                                {{!registrationForm.controls.matchingPassword.errors.isValid? 'Passwords do not match' : null}}
+                            </p>
+                        </div>
+                        <span>By creating an account, you agree to our <a href="#">Terms and Conditions</a></span>
+                    </div> 
+                </div>     
+                <button *ngIf="details.signShow" [disabled]="!registrationForm.valid" type="submit">{{details.button}} </button>
+                <button *ngIf="!details.signShow"   type="submit">{{details.button}} </button>
             </form>
         </div>
     </div>

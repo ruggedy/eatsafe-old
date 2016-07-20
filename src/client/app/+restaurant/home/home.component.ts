@@ -1,16 +1,31 @@
-import { Component, OnInit, OnDestroy, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, OnDestroy, trigger, state, style, transition, animate} from '@angular/core';
 import { RestaurantService } from '../../shared/index';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
     selector: 'sd-restaurant-home',
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.css'],
-    directives:[MD_CARD_DIRECTIVES, MD_LIST_DIRECTIVES]
+    directives:[MD_CARD_DIRECTIVES, MD_LIST_DIRECTIVES],
+    animations: [
+        trigger('flyInOut', [
+            state('in', style({transform: 'translateX(0)'})),
+            transition('void => *', [
+                style({transform: 'translateX(-100%)'}),
+                animate('1s ease')
+            ]),
+            transition('* => void', [
+                style({transform: 'translateX(100%)'}),
+                animate('1s ease')
+            ])
+        ])
+    ]
 })
-export class RestaurantHomeComponent implements OnInit, OnDestroy, OnChanges {
+
+export class RestaurantHomeComponent implements OnInit, OnDestroy {
     constructor(private _rs:RestaurantService) { }
 
     restaurant: any = null;
@@ -19,6 +34,7 @@ export class RestaurantHomeComponent implements OnInit, OnDestroy, OnChanges {
     final: any;
     objs: any = [];
     changeLog: string[] = [];
+    subscription: any = null;
 
     getMenuData(value: any) {
         let starters = [0,0,0];
@@ -35,7 +51,7 @@ export class RestaurantHomeComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     getAllergenData(value: any) {
-        let objs = [];
+        let objs: any = [];
         for(let i = 0; i<value.length; i++) {
             for(let j=0; j<value[i].allergens.length; j++){
                 objs.push(value[i].allergens[j]);
@@ -45,7 +61,7 @@ export class RestaurantHomeComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     uniq(a: any) {
-        let prims = {"boolean":{}, "number":{}, "string":{}}
+        let prims: any = {"boolean":{}, "number":{}, "string":{}}
         return a.filter(function(item: any) {
             let type = typeof item;
             if(type in prims)
@@ -55,41 +71,29 @@ export class RestaurantHomeComponent implements OnInit, OnDestroy, OnChanges {
         });
     }
 
-    
-
-    ngOnDestroy(){
-        this.restaurant = null;
-        this.starters = null;
-        this.allergens = null;
+     getDetails() {
+         this._rs.getRestaurant()
+            .subscribe(
+                data => {
+                    this.restaurant = data;
+                    this._rs.restaurantChanged(data)
+                }
+            )
      }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 
     ngOnInit() {
-        if(this._rs.restaurant && this._rs.menu) {
-            console.log('this is data', this._rs.restaurant);
-            this.starters = this.getMenuData(this._rs.restaurant.menu);
-            this.allergens = this.getAllergenData(this._rs.restaurant.menu);
-            this.restaurant = this._rs.restaurant;
-        } else {
-            this._rs.getRestaurant()
-                .subscribe(
-                    data => {
-                        this.starters = this.getMenuData(data.menu);
-                        this.allergens = this.getAllergenData(data.menu);
-                        this.restaurant = data;
-                        this._rs.restaurant = data;
-                        this._rs.menu = data.menu;
-                    }
-                )
-        }
-     }
-
-    ngOnChanges(changes: {[propName: string] : SimpleChange}){
-        for(let propName in changes) {
-            let chng = changes[propName];
-             let cur  = JSON.stringify(chng.currentValue);
-      let prev = JSON.stringify(chng.previousValue);
-        this.changeLog.push(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
-        console.log(this.changeLog);
-        }
+        this.subscription = this._rs.observableRestaurant$.subscribe(
+            (item:any) => {
+                if(!item) {
+                    this.getDetails();
+                } else {
+                    this.restaurant = item;
+                }
+            }
+        )   
     }
 }

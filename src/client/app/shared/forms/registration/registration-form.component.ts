@@ -15,6 +15,7 @@ export class RegistrationFormComponent implements OnInit {
     
     heading: string = 'heading';
     formActive: boolean = true;
+    @Input() loginError: boolean = false;
     @Input() details: RegInput;
     @Input() asyncVal: boolean = true;
     @Output() user = new EventEmitter();
@@ -32,8 +33,10 @@ export class RegistrationFormComponent implements OnInit {
     ngOnInit() { 
         this.registrationForm = new FormGroup({
             username: new FormControl('',Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(100)]), this.asyncVal? Validators.composeAsync([FormValidator.checkUsername]) : Validators.composeAsync([])),
-            password: new FormControl('',Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(100)])),
-            confirmPassword: new FormControl()
+            matchingPassword: new FormGroup({
+                password: new FormControl('',Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(100)])),
+                confirmPassword: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(100)]))
+            }, {'random': true}, FormValidator.matchPasswords)             
         })
     }
 }

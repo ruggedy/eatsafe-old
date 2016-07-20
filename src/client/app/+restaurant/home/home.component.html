@@ -1,5 +1,5 @@
-<div *ngIf="restaurant" class="row">
-    <div class="col-md-6">
+<div @flyInOut="'in'" *ngIf="restaurant" class="row">
+    <div class="col-md-12">
         <div class="menu-table">
             <md-card>
                 <md-card-header>
@@ -14,44 +14,12 @@
                         </tr>
                         <tr *ngFor="let rest of restaurant.menu">
                             <td data-th="Name">{{rest.name}}</td>
-                            <td data-th="no of allergens">{{rest.allergens.length}}</td>
-                            <td data-th="type">{{rest.menu}}</td>
+                            <td data-th="Allergens">{{rest.allergens}}</td>
+                            <td data-th="Type">{{rest.menu}}</td>
                         </tr>
                     </table>.
                 </md-card-content>
             </md-card>
-        </div>
-    </div>
-    <div *ngIf="starters" class="col-md-6">
-        <div class="row menu-type-group">
-            <div class="col-md-4">
-                <div class="menu-type">
-                    <md-card>
-                        {{starters[0]}}
-                    </md-card>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="menu-type">
-                    <md-card>
-                        {{starters[1]}}
-                    </md-card>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="menu-type">
-                    <md-card>
-                        {{starters[2]}}
-                    </md-card>
-                </div>
-            </div>
-            <div class="allergens-list">
-                <div *ngIf="allergens" class="col-md-12">
-                    <md-card *ngFor="let all of allergens">
-                        {{all}}
-                    </md-card>
-                </div>
-            </div>
         </div>
     </div>
 </div>

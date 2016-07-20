@@ -1,10 +1,17 @@
+.full-container {
+   background-color: #F7F7F7; 
+}
+
 .router-container{
-    padding-left: 10%;
-    padding-top: 13%;
+    padding-top: 5em;
+    margin-left: 230px;
     min-height: 100vh;
     background-color: #F7F7F7;
 }
 
-.static-container {
+
+.full-container .static-container {
     width: 100%;
+    background-color: #F7F7F7;
+    z-index: 2000;
 }

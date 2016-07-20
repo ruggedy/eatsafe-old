@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ROUTER_DIRECTIVES} from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { NavbarComponent, ToolbarComponent} from '../shared/index';
+import { NavbarComponent, ToolbarComponent, AuthService} from '../shared/index';
 
 @Component({
     moduleId: module.id,
@@ -11,8 +11,20 @@ import { NavbarComponent, ToolbarComponent} from '../shared/index';
     directives: [NavbarComponent, ToolbarComponent, ROUTER_DIRECTIVES]
 })
 export class WebsiteComponent implements OnInit {
-    constructor() { }
+    isLoggedIn: boolean = false;
+    constructor(private _as: AuthService) { }
 
-    ngOnInit() { }
+    logout(event:any) {
+        if(event.value === 'logout') {
+            this._as.logout();
+            this.isLoggedIn = false;
+            return true;
+        }
+        return false;
+    }
+
+    ngOnInit() { 
+        this.isLoggedIn = this._as.isLoggedIn();
+    }
 
 }

@@ -1,0 +1,31 @@
+<div @flyInOut="'in'" *ngIf="menu"  class="show-container">
+	<md-card>
+		<md-card-header>
+			{{menu.name}}
+		</md-card-header>
+
+		<md-card-content>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="description-showcase">
+						<h4>description</h4>
+						<p>{{menu.description}}</p> 
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="allergens-showcase">
+						<h4>List of allergens</h4>
+						<ul>
+							<li *ngFor="let item of menu.allergens"> {{item}} </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</md-card-content>
+
+		<md-card-footer>
+			<button type="button" (click)="editMenu(menu)" md-raised-button><i class="fa fa-pencil-square-o"></i>Edit</button>
+			<button type="button" (click)="removeMenu(menu)" md-raised-button><i class="fa fa-trash"></i>Delete</button>
+		</md-card-footer>
+	</md-card>
+</div>
