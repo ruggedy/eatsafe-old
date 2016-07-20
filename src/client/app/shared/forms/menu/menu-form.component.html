@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-md-12 form-group">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-12">
                             <div class="menu-label">
                                 <label for="name">Name</label>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-sm-12">
                             <div class="text-box">
                                 <input type="text" name="name" formControlName="name" value="">
                             </div> 
@@ -61,7 +61,7 @@
         <div class="checkbox" *ngIf="!toggled">
             <ul>
                 <div class="row">
-                    <div class="col-md-4 test" *ngFor="let al of allergens">
+                    <div class="col-md-4 col-sm-12 test" *ngFor="let al of allergens">
                         <li [ngClass]="validateChecked(al)? 'selected' : ''">
                             <md-checkbox (change)="updateChecked(al, $event)" [checked]="validateChecked(al)"></md-checkbox>
                             <label for="">{{al}}</label>

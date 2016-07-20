@@ -122,4 +122,39 @@ i{
     vertical-align: middle;
 }
 
+/*-- responsive --*/ 
+
+@media only screen and (max-width: 980px) {
+    .form-container form  {
+        width: 100%;
+    }
+
+    .opening .form-level label {
+        display: block;
+        margin-left: 1em;
+        width: 30%;
+        font-size: 1.5em;
+    }
+
+    .opening .form-level h3 {
+        font-size: .9em;
+    }
+
+    .opening .form-level .open-times {
+        text-align: center;
+        display: block;
+        margin-left: 1em;
+    }
+
+    .opening .form-level input {
+        width: 4em !important;    
+    }
+
+    .opening .form-level .close-times {
+        text-align: center;
+        display: block;
+        margin-left: 1em;
+    }
+}
+
 

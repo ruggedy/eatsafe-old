@@ -29,17 +29,6 @@ md-card-content {
     padding: .5em;
 }
 
-.my-grid {
-    width: 48%;
-}
-
-.my-grid:first-of-type {
-    margin-right: 1em;
-}
-
-.my-grid-stack {
-    width: 80%;
-}
 
 /*--- Opening Hours -----*/
 

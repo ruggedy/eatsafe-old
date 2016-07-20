@@ -159,3 +159,25 @@ table tbody tr>td:last-of-type>a{
     cursor: pointer;
     color: var(--normal-color);
 }
+
+
+/*--- responsive ---*/
+
+@media only screen and (max-width: 600px) {
+
+    table thead tr>th {
+        line-height: 1.1;
+        font-size: .8em;
+        padding: .4em .3em .4em 1em;
+    }
+    
+    table tbody tr {
+        height: 2.3em;
+    }
+    table tbody tr>td {
+        border: 1px solid #e7ecf1;
+        vertical-align: top;
+        padding: .4em .4em;
+        font-size: 1em;
+    }
+}
