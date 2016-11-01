@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-md-12 form-group">
                     <div class="row">
-                        <div class="col-md-2 col-sm-12">
+                        <div class="col-md-2 col-sm-12 col-xs-12">
                             <div class="menu-label">
                                 <label for="name">Name</label>
                             </div>
                         </div>
-                        <div class="col-md-8 col-sm-12">
+                        <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="text-box">
                                 <input type="text" name="name" formControlName="name" value="">
                             </div> 
@@ -37,17 +37,17 @@
                     <div class="options">
                         <md-radio-group formControlName="menu" (change)="updateRadio($event)">
                             <div class="row test">
-                                <div class="col-md-4">
+                                <div class="col-xs-12 col-md-4">
                                     <div [ngClass]="validateRadio('Starter')? 'selected' : ''">
                                         <md-radio-button  value="Starter" > Starter</md-radio-button>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-xs-12 col-md-4">
                                     <div [ngClass]="validateRadio('Main')? 'selected' : ''">
                                         <md-radio-button  value="Main" > Main </md-radio-button>                                            
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-xs-12 col-md-4">
                                     <div [ngClass]="validateRadio('Dessert')? 'selected' : ''">
                                         <md-radio-button  value="Dessert" >Dessert</md-radio-button>                                            
                                     </div>
@@ -61,12 +61,14 @@
         <div class="checkbox" *ngIf="!toggled">
             <ul>
                 <div class="row">
-                    <div class="col-md-4 col-sm-12 test" *ngFor="let al of allergens">
-                        <li [ngClass]="validateChecked(al)? 'selected' : ''">
+                    <div class="col-xs-12 col-md-4 test" *ngFor="let al of allergens">
+                        <li  [ngClass]="validateChecked(al)? 'selected' : ''">
                             <md-checkbox (change)="updateChecked(al, $event)" [checked]="validateChecked(al)"></md-checkbox>
-                            <label for="">{{al}}</label>
+                            <label (click)="updateChecked2(al, validateChecked2(al)? false : true)" for="">{{al}}</label>
                         </li>
+                       
                     </div>
+                     &nbsp;
                 </div>          
             </ul>
         </div>

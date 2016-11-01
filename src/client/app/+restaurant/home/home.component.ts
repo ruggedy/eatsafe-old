@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy, trigger, state, style, transition, animate} from '@angular/core';
+import { Router } from '@angular/router';
 import { RestaurantService } from '../../shared/index';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_LIST_DIRECTIVES } from '@angular2-material/list';
@@ -26,7 +27,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 export class RestaurantHomeComponent implements OnInit, OnDestroy {
-    constructor(private _rs:RestaurantService) { }
+    constructor(private _rs:RestaurantService, private _router:Router) { }
 
     restaurant: any = null;
     starters: number[] = null;
@@ -71,6 +72,10 @@ export class RestaurantHomeComponent implements OnInit, OnDestroy {
         });
     }
 
+    gotoMenu() {
+        this._router.navigate(['restaurant', 'menu']);
+    }
+
      getDetails() {
          this._rs.getRestaurant()
             .subscribe(
@@ -94,6 +99,7 @@ export class RestaurantHomeComponent implements OnInit, OnDestroy {
                     this.restaurant = item;
                 }
             }
-        )   
+        )
+
     }
 }

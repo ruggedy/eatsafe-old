@@ -31,15 +31,16 @@ export class SingleMenuShowComponent implements OnInit, OnDestroy {
 	private menu: any = null;
 
 	editMenu(value: any) {
-        this._rs.menuEdit = value;
+		this._rs.menuEdit = value;
+        sessionStorage.setItem('menuEdit', JSON.stringify(value));
         this.router.navigate(['restaurant', 'menu/edit'])
     }
 
 	removeMenu(value: any) {
         this._rs.deleteSingleMenu(value, value._id)
             .subscribe(
-                data => console.log(data),
-                error => console.log(error)
+                data => data,
+                error => error
             )
 		this.router.navigate(['restaurant', 'menu']);
     }
@@ -59,7 +60,7 @@ export class SingleMenuShowComponent implements OnInit, OnDestroy {
                         newArr = this._rs.menu.filter((item:any) => {
 										return item._id === id;	
 									});
-						this.menu = newArr[0];
+						this.menu = newArr[0]; 
                         this._rs.restaurantChanged(data);
                     }
                 )
@@ -70,6 +71,8 @@ export class SingleMenuShowComponent implements OnInit, OnDestroy {
 				this.menu = newArr[0];
 			}
 		});
+
+		
 	 }
 
 }

@@ -1,3 +1,5 @@
+@import 'src/client/css/variables';
+
 /*-- Card-Css --*/
 
 md-card {
@@ -25,11 +27,10 @@ md-card-actions {
 /*-- Food-Form Section*/
 .menu-label {
     padding-top: .5em;
-    color: var(--writing-blue);
+    color: $writing-blue;
     text-align: right;
     font-size: .9em;
     font-weight: bold;
-    font-family:  "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
 }
 
 .form-group {
@@ -62,11 +63,11 @@ textarea {
 }
 
 input:hover, textarea:hover {
-    border-left: 5px solid var(--normal-color);
+    border-left: 5px solid $normal-color;
     opacity: 0.6;
 }
 input:focus, textarea:focus {
-    border-left: 5px solid var(--normal-color);
+    border-left: 5px solid $normal-color;
     opacity: 1;
 }
 
@@ -86,7 +87,7 @@ md-radio-group .test>div div {
     margin-left: 15%;
     margin-right: 10%; 
     height: 4em;
-    color: var(--writing-blue);
+    color: $writing-blue;
     -webkit-transition: box-shadow  200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
     -moz-transition: box-shadow 200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
     transition: box-shadow  200ms cubic-bezier(0.23, 1, 0.320, 1), background-color, 200ms, cubic-bezier(0.23, 1, 0.320, 1), color 200ms cubic-bezier(0.23, 1, 0.320, 1);
@@ -94,8 +95,8 @@ md-radio-group .test>div div {
 
 md-radio-group .test>div div.selected {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-    background-color: var(--normal-color);
-    color: var(--gray-white);
+    background-color: $normal-color;
+    color: $gray-white;
 }
 
 md-radio-group .test>div:nth-of-type(2) div{
@@ -121,7 +122,7 @@ md-radio-group .test>div div md-radio-button {
     margin-left: 12em;
     margin-right: 4em;
     height: 5em;
-    color: var(--writing-blue);
+    color: $writing-blue;
     position: relative;
     margin-bottom: 2em;
 
@@ -132,8 +133,8 @@ md-radio-group .test>div div md-radio-button {
 
 .test li.selected {
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-    background-color: var(--normal-color);
-    color: var(--gray-white);
+    background-color: $normal-color;
+    color: $gray-white;
 }
 
 .test li md-checkbox {
@@ -154,8 +155,6 @@ md-radio-group .test>div div md-radio-button {
 .test:nth-child(3n+2) li {
     margin-left: 8em;
     margin-right: 8em;
-    
-    height: 5em;
 }
 
 .test:nth-child(3n+3) li {
@@ -163,21 +162,6 @@ md-radio-group .test>div div md-radio-button {
     margin-left: 4em;
 }
 
-.test:nth-child(2) li label, 
-.test:nth-child(12) li label, 
-.test:nth-child(14) li label{
-    font-size: 1em;
-}
-
-.test:nth-child(2) li label {
-    top: 2.4em ;
-}
-.test:nth-child(12) li label {
-    top: 2.4em ;
-}
-.test:nth-child(14) li label {
-    top: 2.6em ;
-}
 
 /*--- button section ---*/
 
@@ -192,9 +176,9 @@ md-radio-group .test>div div md-radio-button {
 
 .buttons button:first-of-type {
     margin-left: 25em;
-    border: 1px solid var(--normal-color);
+    border: 1px solid $normal-color;
     background-color: transparent;
-    color: var(--normal-color);
+    color: $normal-color;
     outline: none;
     -webkit-transition: border  100ms ease-in, color  100ms ease-in;
     -moz-transition: border 100ms ease-in, color  100ms ease-in;
@@ -202,12 +186,12 @@ md-radio-group .test>div div md-radio-button {
 }
 
 .buttons button:first-of-type:hover {
-    border: 1px solid var(--dark-color);
-    color: var(--dark-color);
+    border: 1px solid $dark-color;
+    color: $dark-color;
 }
 
 .buttons button:last-of-type {
-    background-color: var(--normal-color);;
+    background-color: $normal-color;;
     color: white;
     outline: none;
     -webkit-transition: background-color  100ms ease-in;
@@ -216,7 +200,7 @@ md-radio-group .test>div div md-radio-button {
 }
 
 .buttons button:last-of-type:hover {
-    background-color: var(--dark-color);
+    background-color: $dark-color;
     
 }
 
@@ -226,7 +210,7 @@ md-card-header h2 {
     display: block;
     letter-spacing: 0.05em;
     word-spacing: 0.1em;
-    color: var(--writing-blue);
+    color: $writing-blue;
 }
 
 
@@ -315,5 +299,73 @@ md-card-header h2 {
     .text-box,
     .text-area {
         margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    
+    md-card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    md-card-header h2 {
+        font-size: .8em;
+    }
+
+    md-radio-group .test>div div {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    md-radio-group .test>div:nth-of-type(2) div{
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    md-radio-group .test>div:nth-of-type(3) div {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+ 
+// checkbox responsive
+
+   
+    .test li {
+        margin-left: 0;
+        margin-right: 0;
+        height: 3em;
+    }
+
+     .test li md-checkbox {
+        top: 1em;
+    } 
+
+    .test li label {
+        top: 1.8em;
+        font-size: .8em;
+    }
+
+    .test:nth-child(3n+2) li {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .test:nth-child(3n+3) li {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    // buttons
+    .buttons {
+        padding-left: 2em;
+    }
+    .buttons button {
+        width: 6em;
+        margin-right: 0;
+        font-size: .8em;
     }
 }

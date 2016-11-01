@@ -26,7 +26,7 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
     constructor(public _rs: RestaurantService, public tFC: TimeFormatConversion, public dFC: DataFormatConversion) { }
     
     restaurant: any = null;
-    nav: string[] = ['restaurant', 'home'];
+    nav: string[] = ['restaurant', 'profile'];
     subscription: any = null;
 
     myRestaurant(event: any) {
@@ -37,7 +37,7 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
                 response => {
                     this._rs.restaurantChanged(response);
                 },
-                error => console.log(error)
+                error => error
             )
     }
 
@@ -65,7 +65,8 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
                     this.restaurant = this._rs.convertData(item);
                 }
             }
-        )   
+        )
+   
     }
 
 }

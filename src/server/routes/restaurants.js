@@ -65,8 +65,12 @@ router.post('/menu', function (req, res, next) {
             menu: value.menu,
             restaurant: doc._id 
         });
-        for(var i = 0; i< checked.length; i++){
-            menu.allergens.push(checked[i]);
+        if(checked) {
+            for(var i = 0; i< checked.length; i++){
+                menu.allergens.push(checked[i]);
+            }
+        } else {
+            menu.allergens = [];
         }
 
         menu.save(function(err, result){

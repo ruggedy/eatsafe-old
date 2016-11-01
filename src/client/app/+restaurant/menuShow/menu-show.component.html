@@ -1,7 +1,7 @@
 <div @flyInOut="'in'" *ngIf="menu"  class="custom-container">
     <md-card>
         <md-card-title>
-            <h2>Menu Table</h2>
+            <h2>Restaurant Menu</h2>
         </md-card-title>
         <button type="button" (click)="gotoNew()" md-raised-button> Add New <i class="fa fa-plus"></i></button>
         <md-card-content>
@@ -20,12 +20,12 @@
                     <tr *ngFor="let item of menu | paginate: { itemsPerPage: 10, 
                                                                currentPage: pageNumber
                                                                }" >
-                        <td><md-checkbox [checked]="validateChecked(item)" (change)="updateChecked(item, $event)" ></md-checkbox></td>
-                        <td><a [routerLink]="['/restaurant/menu/', item._id]">{{item.name}}</a></td>
-                        <td>{{item.allergens.length}}</td>
-                        <td>{{item.menu}}</td>
-                        <td><a (click)=editMenu(item)><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a (click)=removeMenu(item)><i class="fa fa-trash"></i></a></td>
+                        <td ><md-checkbox [checked]="validateChecked(item)" (change)="updateChecked(item, $event)" ></md-checkbox></td>
+                        <td data-th="Name"><a [routerLink]="['/restaurant/menu/', item._id]">{{item.name}}</a></td>
+                        <td data-th="allergens">{{item.allergens.length}}</td>
+                        <td data-th="type">{{item.menu}}</td>
+                        <td data-th="Edit"><a (click)=editMenu(item)><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td data-th="delete"><a (click)=removeMenu(item)><i class="fa fa-trash"></i></a></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,3 +1,5 @@
+@import "variables";
+
 /* Reset */
 html,
 body,
@@ -8,25 +10,6 @@ div {
 }
 
 /* Color Scheme */
-:root {
-  --lighter-color: rgba(228, 254, 194, 1);
-  --light-color: rgba(202, 254, 133, 1);
-  --normal-color : rgba(111, 190, 8, 1);
-  --dark-color : rgba(78, 133, 5, 1);
-  --dark-color-transparent : rgba(78, 133, 5, 0.7);
-  --gray-white: #FCFCFC;
-  --writing-blue: #73879C;
-  --body-light: #F7F7F7;
-  --color-light: #f4f4f4;
-  --color-dark: #4b5f71;
-  --color-red: #e74c3c;
-  --color-gray: #9cc2cb;
-  --color-purple: #9b59b6;
-  --color-green: #1abb9c;
-  --color-blue: #3498db;
-
-  --placeholder: lightgray;
-}
 
 .row {
     margin-left: 0;
@@ -46,7 +29,7 @@ div {
 
 /* Set up a default font and some padding to provide breathing room */
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Comfortaa', cursive;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,19 +37,19 @@ body {
 
 /*-- checkbox settings ---*/
 .md-checkbox-frame {
-    background-color: var(--body-light) !important;
+    background-color: $body-light !important;
 }
 
 .md-radio-outer-circle {
-    background-color: var(--body-light) !important;
-    border-color: var(--dark-color) !important;
+    background-color: $body-light !important;
+    border-color: $dark-color !important;
 }
 .md-radio-focused .md-ink-ripple {
   opacity: 0 !important;
 }
 
 .md-radio-inner-circle {
-    background-color: var(--dark-color) !important;
+    background-color: $dark-color !important;
 }
 
 p {
@@ -126,4 +109,21 @@ a {
 
 a:hover {
   color: #11718C;
+}
+
+
+i.home {
+  color: $normal-color;
+  font-size: 4em;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+
+}
+
+@media only screen and (max-width: 780px) {
+  .row {
+    display: block;
+  }
 }

@@ -24,9 +24,18 @@ export class SignInComponent implements OnInit {
                     localStorage.setItem('token', data.obj);
                     localStorage.setItem('userId', data.userId);
                     this.error = false;
+                    this._authService.userStatusCheck(this._authService.isLoggedIn(), this._authService.isValidated(), this._authService.isAdmin());
+                    if(this._authService.isAdmin()) {
+                        this._router.navigate(['home']);
+                        return
+                    }
                     if(data.restaurantId) {
                         localStorage.setItem('restaurant', data.restaurantId);
-                        this._router.navigate(['restaurant', 'home']); 
+                        if(this._authService.isValidated()) {
+                            this._router.navigate(['restaurant', 'home']);
+                            return
+                        }
+                        this._router.navigate(['home']);
                         return 
                     }
                     this._router.navigate(['restaurant', 'profile/new']);

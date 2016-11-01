@@ -1,0 +1,19 @@
+@import 'src/client/css/variables';
+
+.full-container	{
+	position: relative;
+	min-height: 100vh;
+}
+
+footer {
+	position: absolute;
+	width: 100%;
+	background-color: $normal-color;
+	bottom: 0;
+	font-size: .8em;
+	height: 48px;
+	text-align: center;
+	color: white;
+	padding-top: 1em;
+	
+}

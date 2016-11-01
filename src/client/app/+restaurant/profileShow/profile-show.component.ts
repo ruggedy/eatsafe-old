@@ -62,7 +62,7 @@ export class ProfileShowComponent implements OnInit, OnDestroy {
                             this.workingHours = this.restaurantPackage[1];
                         }
                     }
-                )   
+                )  
     }
 
 }

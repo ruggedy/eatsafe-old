@@ -12,6 +12,8 @@ export class RestaurantService {
 
 
     private restaurant: any = new BehaviorSubject<any>(null);
+    private currentPage: any = new BehaviorSubject<any>('Home');
+    observableCurrentPage$ = this.currentPage.asObservable();
     observableRestaurant$ = this.restaurant.asObservable();
     menu: any[] = null;
     menuEdit: any = null;
@@ -90,14 +92,25 @@ export class RestaurantService {
             .catch(this.errorHandler)      
     }
 
+    currentPageChanged(value: string) {
+        this.currentPage.next(value);
+    }
+
     restaurantChanged(value: any) {
         this.restaurant.next(value);
     }
 
     menuChanged(value: any) {
         let resValue = this.restaurant.value;
-        resValue.menu.push(value);
-        this.restaurant.next(resValue);
+        let index = resValue.menu.indexOf(this.menuEdit);
+        if(index !== -1) {
+            resValue.menu[index] = value;
+            this.restaurant.next(resValue); 
+        } else {
+            resValue.menu.push(value);
+        }
+
+        sessionStorage.removeItem('menuEdit');
     }
     
 

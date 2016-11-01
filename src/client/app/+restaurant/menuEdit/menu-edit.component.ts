@@ -35,24 +35,17 @@ export class MenuEditComponent implements OnInit {
         this._rs.updateMenu(event, this.menuId)
             .subscribe(
                 data  => {
-                    let index = this._rs.menu.indexOf(this._rs.menuEdit);
-
-                    if (index !== -1 ) {
-                        this._rs.menu[index] = data;
                         this._rs.menuChanged(data);
-                    }
-
-                    this._rs.menuEdit = null;
                 },
-                error => console.log(error)
+                error => error
             )
             
             this._router.navigate(['restaurant', 'menu'])
     }
 
     ngOnInit() { 
-        if(this._rs.menuEdit) {
-            let value = this._rs.menuEdit;
+        if(sessionStorage.getItem('menuEdit')) {
+            let value = JSON.parse(sessionStorage.getItem('menuEdit'));
 
             this.menuId = value._id;
             this.init.name = value.name;

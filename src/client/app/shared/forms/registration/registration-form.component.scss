@@ -1,3 +1,5 @@
+@import 'src/client/css/variables';
+
 /* ----- Initial setup ---- */
 .form-div {
     width: 100%;
@@ -23,7 +25,7 @@ input {
 /* ----- Form Header ---- */
 .form-div .form .form-header {
     color: white;
-    background-color: var(--normal-color);
+    background-color: $normal-color;
     margin-bottom: 1.2em;
 }
 
@@ -86,7 +88,7 @@ input {
     height: 100%;
     line-height: 2.5em;
     text-align: center;
-    color: var(--placeholder);
+    color: $placeholder;
 }
 
 
@@ -102,23 +104,23 @@ input {
 }
 
 .form-div .form .form-body .input-control input:focus {
-    border-left: 5px solid var(--normal-color); 
+    border-left: 5px solid $normal-color; 
     opacity: 1 !important;
 }
 
 .form-div .form .form-body .input-control input:focus+span {
-    color: var(--normal-color); 
+    color: $normal-color; 
     opacity: 1 !important;
 }
 
 .form-div .form .form-body .input-control input:hover {
     cursor: pointer;
-    border-left: 5px solid var(--normal-color);
+    border-left: 5px solid $normal-color;
     opacity: 0.6;
 }
 
 .form-div .form .form-body .input-control input:hover+span {
-    color: var(--normal-color);
+    color: $normal-color;
     opacity: 0.6;
 }
 
@@ -140,7 +142,7 @@ input {
     font-weight: bold;
     width: 80%;
     margin-left: 10%;
-    background-color: var(--normal-color);;
+    background-color: $normal-color;;
     margin-top: .6em;
     margin-bottom: 1.5em;
     color: white;
@@ -151,7 +153,7 @@ input {
 }
 .form-div .form .form-body button:hover,
 .form-div .form .form-body button:active{
-    background-color: var(--dark-color);
+    background-color: $dark-color;
 }
 
 /*-- validations - css ---*/
@@ -159,7 +161,7 @@ input {
 .input-control + p {
     display: inline-block;
     font-size: .8em;
-    color: var(--normal-color);
+    color: $normal-color;
 }
 
 .username-valid {
@@ -168,6 +170,19 @@ input {
     color: #d9534f;
     font-size: .8em;
     z-index: 4;
+}
+
+/*-- responsive --*/
+
+@media only screen and (max-width: 980px) {
+
+    .form-div .form {
+        margin-top: 4em;
+        margin-left: 15%;
+        width: 70%;
+        background-color: #f6f6f6;
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2);
+    }
 }
 
 

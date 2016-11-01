@@ -1,6 +1,8 @@
-.container-fluid {
+@import 'src/client/css/variables';
+
+.container {
     width: 90%;
-    height: 50em;
+    height: auto;
     padding-top: 3em;
 }
 
@@ -10,13 +12,7 @@ md-card {
     margin-bottom: 2em;
 }
 
-.left md-card {
-    min-height: 15em;
-}
 
-.left {
-    margin-right: 2em;
-}
 
 md-card md-card-header {
     margin-bottom: 0;
@@ -33,6 +29,7 @@ md-card-content {
 /*--- Opening Hours -----*/
 
 li  {
+    position: relative;
     margin-bottom: .5em;
     height: 2em;
     line-height: 2em;
@@ -42,37 +39,33 @@ li  {
     font-size: 1.2em;
 }
 
-li .day {
-    text-align: left;
-    font-weight: bold;
-}
 
 .red {
-    border-left: 5px solid var(--color-red);
+    border-left: 5px solid $color-red;
 }
 
 .blue {
-    border-left: 5px solid var(--color-blue);
+    border-left: 5px solid $color-blue;
 }
 
 .light {
-    border-left: 5px solid var(--color-light);
+    border-left: 5px solid $color-light;
 }
 
 .green {
-    border-left: 5px solid var(--color-green);
+    border-left: 5px solid $color-green;
 }
 
 .purple {
-    border-left: 5px solid var(--color-purple);
+    border-left: 5px solid $color-purple;
 }
 
 .gray {
-    border-left: 5px solid var(--color-gray);
+    border-left: 5px solid $color-gray;
 }
 
 .dark {
-    border-left: 5px solid var(--color-dark);
+    border-left: 5px solid $color-dark;
 }
 
 /*--- Address ----*/
@@ -99,23 +92,54 @@ li .day {
 
 /*--- edit button -- */
 
-.container-fluid > button {
+.container > button {
     color: white;
     height: 2.5em;
     vertical-align: top;
     font-weight: 600;
     font-size: .9em;
-    background-color: var(--normal-color);
+    background-color: $normal-color;
     margin-top: 1em;
     margin-bottom: 3em;
 }
 
-.container-fluid > button i {
+.container > button i {
     margin-right: .5em;
 }
 
 .time1.closed {
     color: #d9534f;
+}
+
+@media only screen and (max-width: 780px) {
+    .container {
+        width: 100%;
+        height: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    li  {
+        font-size: .9em;
+        position: relative;
+    }
+
+    li >div div  {
+        display: inline-block;
+    }
+
+    li > div div:last-child  {
+        position: absolute;
+        right: 1em;
+    }
+
+    .address span {
+        font-size: .9em;
+    }
+
+    .address span>span {
+        font-size: .8em;
+    }
 }
 
 

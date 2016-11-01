@@ -4,7 +4,7 @@ import { RestaurantComponent, ProfileCreateComponent,
         ProfileEditComponent, ProfileShowComponent, 
         MenuCreateComponent, RestaurantHomeComponent,
         MenuShowComponent, MenuEditComponent, SingleMenuShowComponent } from './index';
-import { NewAccountGuard, AuthGuard, ProfileGuard, ValidatedGuard } from '../shared/index';
+import { NewAccountGuard, AuthGuard, ProfileGuard, ValidatedGuard, MenuEditGuard } from '../shared/index';
 
 export const RestaurantRoutes: RouterConfig = [
     {
@@ -50,7 +50,7 @@ export const RestaurantRoutes: RouterConfig = [
             {
                 path: 'menu/edit',
                 component: MenuEditComponent,
-                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard]
+                canActivate: [AuthGuard, ProfileGuard, ValidatedGuard, MenuEditGuard]
             },
             {
                 path: 'menu/:id',

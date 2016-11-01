@@ -43,14 +43,15 @@ export class MenuShowComponent implements OnInit, OnDestroy {
 
     editMenu(value: any) {
         this._rs.menuEdit = value;
+        sessionStorage.setItem('menuEdit', JSON.stringify(value));
         this._router.navigate(['restaurant', 'menu/edit'])
     }
 
     removeMenu(value: any) {
         this._rs.deleteSingleMenu (value, value._id)
             .subscribe(
-                data => console.log(data),
-                error => console.log(error)
+                data => data,
+                error => error
             )
     }
 
@@ -89,7 +90,7 @@ export class MenuShowComponent implements OnInit, OnDestroy {
         this._rs.deleteMultipleMenu(this.checkedItems, this.checkedIds)
         .subscribe(
             data => data,
-            error => console.log(error)
+            error => error
             
         )
         this.checkedIds = [];
@@ -126,6 +127,6 @@ export class MenuShowComponent implements OnInit, OnDestroy {
                     this.menu = item.menu;
                 }
             }
-        )   
+        ) 
     }
 }

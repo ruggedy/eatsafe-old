@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Registration, RestaurantService } from '../index';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/Rx';
 
@@ -9,6 +10,12 @@ import 'rxjs/Rx';
 export class AuthService {
     constructor(private _http: Http ){}
 
+    private loggedIn: any = new BehaviorSubject<any>(false);
+    private admin: any = new BehaviorSubject<any>(false);
+    private validated: any = new BehaviorSubject<any>(false);
+    observableloggedIn$ = this.loggedIn.asObservable();
+    observableobservableAdmin$ = this.admin.asObservable();
+    observableobservableValidated$ = this.validated.asObservable();
     userName: string = null;
     users: any[] = null;
     jwtHelper: JwtHelper = new JwtHelper();
@@ -97,6 +104,7 @@ export class AuthService {
         return false;
     }
 
+
     isValidated() {
         let userInfo = localStorage.getItem('token')? this.jwtHelper.decodeToken(localStorage.getItem('token')) : null;
 
@@ -106,6 +114,12 @@ export class AuthService {
             }
         }
         return false;
+    }
+
+    userStatusCheck(value1: any, value2: any, value3: any) {
+        this.loggedIn.next(value1);
+        this.validated.next(value2);
+        this.admin.next(value3);
     }
 
     private extractData(res: Response) {

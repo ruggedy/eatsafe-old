@@ -1,7 +1,9 @@
+@import 'src/client/css/variables';
+
 /*--- Menu-Details Table ---*/
 .menu-table {
-    margin-left: 4em;
-    margin-right: 2em;
+    margin-left: 0em;
+    margin-right: 0em;
 }
 
 table {
@@ -13,8 +15,8 @@ md-card-header {
     border-bottom: 1px solid #E6E9ED;
     letter-spacing: 0.05em;
     word-spacing: 0.1em;
-    color: var(--writing-blue);
-    font-size: 1.2em;
+    color: $writing-blue;
+    font-size: .9em;
 }
 
 
@@ -22,13 +24,13 @@ md-card-header {
 table th {
     display: none;
     font-size: 1em;
-    color: var(--writing-blue);
+    color: $writing-blue;
 }
 
 table td {
     display: block;
     font-size: .9em;
-    color: var(--writing-blue);
+    color: $writing-blue;
 }
 
 table td:first-child {
@@ -60,7 +62,7 @@ table th, table td {
     margin-left: 1em; 
     margin-right: 1em;
     font-size: 2em;
-    background-color: var(--normal-color);
+    background-color: $normal-color;
 }
 
 .menu-type-group>div:first-child .menu-type {
@@ -73,9 +75,32 @@ table th, table td {
     margin-left: 0; 
 }
 
+
+button {
+    color: white;
+    height: 2.5em;
+    vertical-align: top;
+    font-weight: 600;
+    font-size: .9em;
+    background-color: $normal-color;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
 /*--- responsive ----*/
 
 @media (min-width: 480px) {
+
+
+    md-card-header {
+        font-size: 1.2em;
+    }
+
+    .menu-table {
+        margin-left: 4em;
+        margin-right: 2em;
+    }
+
     table td:before {
         display: none;
     }

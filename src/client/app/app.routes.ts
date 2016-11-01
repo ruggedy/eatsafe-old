@@ -3,7 +3,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { RestaurantRoutes } from './+restaurant/index';
 import { WebsiteRoutes } from './+website/index';
 import { AdminRoutes } from './+admin/index';
-import { NewAccountGuard, ProfileGuard ,AuthGuard, AuthService, RestaurantService, TimeFormatConversion, ValidatedGuard } from './shared/index';
+import { NewAccountGuard, ProfileGuard ,AuthGuard, AuthService, RestaurantService, TimeFormatConversion, ValidatedGuard, AdminGuard, MenuEditGuard  } from './shared/index';
 
 const routes: RouterConfig = [
   ...WebsiteRoutes,
@@ -17,5 +17,5 @@ const routes: RouterConfig = [
 
 export const APP_ROUTER_PROVIDERS = [
   provideRouter(routes),
-  [NewAccountGuard, AuthGuard, AuthService, ProfileGuard, RestaurantService, TimeFormatConversion, ValidatedGuard]
+  [NewAccountGuard, AuthGuard, AuthService, ProfileGuard, RestaurantService, TimeFormatConversion, ValidatedGuard, AdminGuard, MenuEditGuard ]
 ];

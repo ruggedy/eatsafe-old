@@ -1,3 +1,5 @@
+@import 'src/client/css/variables';
+
 :host {
   border-color: #e1e1e1;
   border-style: solid;
@@ -33,9 +35,9 @@ nav a:nth-child(3){
   height: 2.5em;
   width: 6em;
   padding-left: 1em;
-  border: 1px solid var(--normal-color);
+  border: 1px solid $normal-color;
   margin: .5em 1em;
-  color: var(--normal-color);
+  color: $normal-color;
   -webkit-transition: border-color 300ms ease, color 300ms ease, background-color 300ms ease;
   -moz-transition: border-color 300ms ease, color 300ms ease, background-color 300ms ease;
   transition: border-color 300ms ease, color 300ms ease, background-color 300ms ease;
@@ -43,17 +45,17 @@ nav a:nth-child(3){
 
 nav a:nth-child(2):hover,
 nav a:nth-child(3):hover{
-  border-color: var(--dark-color);
-  color: var(--dark-color);
+  border-color: $dark-color;
+  color: $dark-color;
 }
 
 nav a:nth-child(2){
-  background-color: var(--normal-color);
+  background-color: $normal-color;
   color: white;
 }
 
 nav a:nth-child(2):hover{
-  background-color: var(--dark-color);
+  background-color: $dark-color;
   color: white;
 }
 

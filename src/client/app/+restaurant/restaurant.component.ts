@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { ROUTER_DIRECTIVES} from '@angular/router';
 import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { HTTP_PROVIDERS } from '@angular/http';
@@ -9,6 +9,7 @@ import { RestaurantService, TimeFormatConversion,DataFormatConversion, Restauran
     selector: 'sd-restaurant',
     templateUrl: 'restaurant.component.html',
     styleUrls: ['restaurant.component.css'],
+    changeDetection: ChangeDetectionStrategy.Default,
     providers: [TimeFormatConversion, DataFormatConversion],
     directives: [RestaurantFormComponent, REACTIVE_FORM_DIRECTIVES, ROUTER_DIRECTIVES, RestaurantHeaderComponent, RestaurantSidebarComponent]
 })
@@ -22,26 +23,18 @@ export class RestaurantComponent implements OnInit, OnDestroy {
          this._rs.getRestaurant()
             .subscribe(
                 data => {
-                    this.name = data.name;
                     this._rs.restaurantChanged(data)
                 }
             )
      }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
     }
 
     ngOnInit() {
-        this.subscription = this._rs.observableRestaurant$.subscribe(
-            (item:any) => {
-                if(!item) {
-                    this.getDetails();
-                } else {
-                    this.name = item.name;
-                }
-            }
-        )
+        
+
+        this.getDetails();
 
         this.hasRestaurant = this._as.hasRestaurant();  
     }

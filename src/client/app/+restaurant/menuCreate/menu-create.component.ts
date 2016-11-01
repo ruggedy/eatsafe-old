@@ -21,7 +21,10 @@ import { Menu, MenuFormComponent, RestaurantService } from '../../shared/index';
                 animate('1s ease')
             ])
         ])
-    ] 
+    ]
+    
+
+    
 })
 
 export class MenuCreateComponent implements OnInit {
@@ -35,11 +38,12 @@ export class MenuCreateComponent implements OnInit {
                 data => {    
                     this._rs.menuChanged(data);
                 },
-                error => console.log(error)
+                error => error
             );
             this._router.navigate(['restaurant', 'menu'])
     }
 
-    ngOnInit() { }
+    ngOnInit() { 
+    }
 
 }

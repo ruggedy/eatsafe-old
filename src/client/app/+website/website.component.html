@@ -1,3 +1,8 @@
-<sd-toolbar></sd-toolbar>
-<sd-navbar [isAdmin]="isAdmin" [isValidated]="isValidated" [isLoggedIn]="isLoggedIn" (logout)=logout($event) ></sd-navbar>
-<router-outlet></router-outlet>
+<div class="full-container">
+	<sd-toolbar></sd-toolbar>
+	<sd-navbar [isAdmin]="isAdmin" [isValidated]="isValidated" [isLoggedIn]="isLoggedIn" (logout)=logout($event) ></sd-navbar>
+	<router-outlet></router-outlet>
+	<footer>
+		&copy; copyright EatSafe 2016. Site design and development by <a href="http://www.johnadetutu.co.uk/" target="_blank"> Firesparks LTD</a> and <a href="https://www.weavee.co.uk/" target="_blank"> Weavee LTD</a>
+	</footer>
+</div>

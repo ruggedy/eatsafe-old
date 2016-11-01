@@ -22,7 +22,7 @@ export class RestaurantFormComponent implements OnInit {
     @Input() showFull: boolean = false;
     @Output() restaurant = new EventEmitter();
     timesHour: string[] = [];
-    timesMin: string[] = [];  
+    timesMin: string[] = ['00', '30'];  
     result: Restaurant;
     error: string;
     restaurantForm: FormGroup;
@@ -48,16 +48,6 @@ export class RestaurantFormComponent implements OnInit {
                 this.timesHour.push(0 +''+i);
             } else {
                 this.timesHour.push(String(i));
-            }
-        }
-        for (let i=0; i<60; i++) {
-            if( i === 0) {
-               this.timesMin.push(0 +''+i); 
-            }
-            else if ((Math.log10(i)+1) < 2 ) {
-                this.timesMin.push(0 +''+i);
-            } else {
-                this.timesMin.push(String(i));
             }
         }
 

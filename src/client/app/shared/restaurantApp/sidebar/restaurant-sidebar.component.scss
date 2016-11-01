@@ -1,7 +1,9 @@
+@import 'src/client/css/variables';
+
 nav {
     height: 100vh;
     position: fixed;
-    background-color: var(--normal-color);
+    background-color: $normal-color;
     width: 230px;
     z-index: 500;
 }
@@ -52,7 +54,7 @@ nav ul li a p {
     position: relative
 }
 
-.logo-circle a img {
+.logo-circle a > img {
     width: 80%;
     position: absolute;
     top: 50%;
@@ -63,7 +65,7 @@ nav ul li a p {
     transition: transform 300ms  ease, top 300ms  ease, left 300ms  ease;
 }
 
-.logo-circle a img:hover {
+.logo-circle a > img:hover {
     transform: scale(1.1);
     top: 10%;
     left: 10%;
@@ -104,9 +106,7 @@ nav ul li a p {
 
 .user-circle img{
     position: absolute;
-    left: -0.2em;
-    bottom: -0.2em;
-    width: 150%;
+    width: 100%;
 }
 .user-info {
     float: left;
@@ -115,14 +115,9 @@ nav ul li a p {
 
 span {
     display: block;
-    font-size: .7em;
+    font-size: 1em;
     color: #ecf0f1;
-    padding-top: .5em;
-}
-
-span:last-of-type {
-    font-size: .9em;
-    color: white;
+    padding-top: 1em;
 }
 
 /*--- side-bar footer ---*/
@@ -133,7 +128,7 @@ span:last-of-type {
     width: 100%;
     height: 2em;
     display: block;
-    background-color: var(--dark-color);
+    background-color: $dark-color;
     padding-right: 1em;
 }
 
@@ -182,6 +177,59 @@ span:last-of-type {
         top: 0;
         transform: none;
         color: #EDEDED;
+    }
+
+    .user-info {
+        margin-left: 0em;
+    }
+
+    span {
+        display: block;
+        font-size: .8em;
+    }
+    
+}
+
+@media only screen and  (max-width: 780px ) {
+
+    nav {    
+        width: 60px;
+    }
+
+    nav ul {
+        margin-top: 10em;
+    }
+
+    nav ul li{
+        height: 4em;
+    }
+
+    nav ul li a i {
+        font-size: 2em;
+    }
+
+    nav ul li a i:nth-of-type(2),
+    nav ul li a p {
+        display: none;
+    }
+
+    .eat-safe p {
+        display: block;
+        font-size: 1em;
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        color: #EDEDED;
+    }
+
+    .user-info {
+        margin-left: 0em;
+    }
+
+    span {
+        display: block;
+        font-size: .6em;
     }
     
 }

@@ -1,5 +1,6 @@
+@import 'src/client/css/variables';
+
 .custom-container {
-    margin-top: 2em;
     padding-left: auto;
     padding-right: auto;
 }
@@ -10,6 +11,8 @@ md-card {
 
 md-card-title {
     border-bottom: 1px solid #e7ecf1;
+    color: $writing-blue;
+    font-size: 1.8em;
 }
 
 /*--- button-color ---*/
@@ -20,7 +23,7 @@ button {
     vertical-align: top;
     font-weight: 600;
     font-size: .9em;
-    background-color: var(--normal-color);
+    background-color: $normal-color;
     margin-top: 1em;
     margin-bottom: 3em;
 }
@@ -35,18 +38,9 @@ md-card-footer {
 
 md-card-footer button {
     float: right;
-	margin-top: 0;
-    margin-bottom: 0;
-	margin-left: 0.5em;
-}
-
-md-card-footer button:first-of-type {
-    float: left;
-}
-
-md-card-footer button.delete {
     background-color: #d9534f;
-    
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /*--- table-design ---*/
@@ -102,7 +96,7 @@ table tbody tr>td:first-child md-checkbox {
 
 table tbody tr>td>a{
     cursor: pointer;
-    color: var(--normal-color);
+    color: $normal-color;
 }
 
 table tbody tr>td:last-of-type>a{
@@ -113,6 +107,7 @@ table tbody tr>td:last-of-type>a{
 
 .pagination-container {
     display: inline-block;
+    margin-top: 1em;
 }
 
 .custom-pagination {
@@ -122,7 +117,7 @@ table tbody tr>td:last-of-type>a{
 .custom-pagination .pagination-previous, 
 .custom-pagination .pagination-next {
     display: inline-block;
-    color: var(--normal-color);
+    color: $normal-color;
     width: 3em;
     height: 2em;
     border: 1px solid #e7ecf1;
@@ -136,7 +131,7 @@ table tbody tr>td:last-of-type>a{
 .custom-pagination .pagination-previous a, 
 .custom-pagination .pagination-next a {
     cursor: pointer;
-    color: var(--normal-color);
+    color: $normal-color;
 }
 
 .custom-pagination .pagination-next {
@@ -150,7 +145,7 @@ table tbody tr>td:last-of-type>a{
 
 .custom-pagination .pages {
     display: inline-block;
-    color: var(--normal-color);
+    color: $normal-color;
     width: 3em;
     height: 2em;
     border: 1px solid #e7ecf1;
@@ -160,12 +155,93 @@ table tbody tr>td:last-of-type>a{
 }
 
 .custom-pagination .pages.current {
-    background-color: var(--normal-color);
+    background-color: $normal-color;
     color: #f5f5f5;
-    border-color: var(--normal-color);
+    border-color: $normal-color;
 }
 
 .custom-pagination .pages a {
     cursor: pointer;
-    color: var(--normal-color);
+    color: $normal-color;
+}
+
+
+/*--- responsive ---*/
+
+@media only screen and (max-width: 600px) {
+    button {
+        margin-bottom: 1em;
+    }
+   
+   md-card-content {
+        height: auto;
+        margin-bottom: 3em;
+    }
+    
+    md-card-title h2 {
+        font-size: 1em;
+    }
+
+    md-card-content {
+        height: auto;
+    }
+    
+   
+    table {
+        margin: 1em 0;
+        width: 100%;
+        border: none;
+    }
+
+    md-card {
+        margin: 0 0em;
+    }
+    
+    table tbody tr {
+        height: 5em;
+    }
+    table tbody tr>td {
+        border: none;
+        vertical-align: top;
+        padding: 0em 0em;
+    }
+
+    table tbody tr>td:first-child {
+        padding-top: 1.5em;
+    }
+
+    table tbody tr>td:last-child {
+        padding-bottom: 1.5em;
+    }
+    table th {
+        display: none;
+    }
+
+    table td {
+        display: block;
+        font-size: .9em;
+        color: $writing-blue;
+    }
+
+    table td:first-child {
+        display: none;
+
+    }
+
+    table td:last-child {
+        padding-bottom: 1em;
+    }
+
+    table td:before {
+        content: attr(data-th) ": ";
+        font-weight: bold;
+        width: 6.5em;
+        display: inline-block;
+    }
+
+    table th, table td {
+        text-align: left;
+    }
+
+
 }

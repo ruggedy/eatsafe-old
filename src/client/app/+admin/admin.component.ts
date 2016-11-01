@@ -73,7 +73,7 @@ export class AdminComponent implements OnInit {
         this._as.deleteMultipleUsers(this.checkedItems, this.checkedIds, this.checkedMenuItemsId)
 			.subscribe(
 				data => data,
-				error => console.log(error)
+				error => error
 			)
 
 		this.checkedIds = [];
@@ -84,8 +84,8 @@ export class AdminComponent implements OnInit {
 	validateMultiUsers() {
         this._as.validateMultipleUsers(this.checkedItems, this.checkedIds)
 			.subscribe(
-				data => console.log(data),
-				error => console.log(error)
+				data => data,
+				error => error
 			)
 
 		this.checkedIds = [];
@@ -101,11 +101,10 @@ export class AdminComponent implements OnInit {
 			this._as.getUsers()
 				.subscribe(
 					data => {
-						console.log(data);
 						this.users = data;
 						this._as.users = data;
 					},
-					error => console.log(error)
+					error => error
 				)
 		}
 	 }

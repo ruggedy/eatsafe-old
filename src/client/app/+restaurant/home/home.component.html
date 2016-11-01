@@ -3,14 +3,14 @@
         <div class="menu-table">
             <md-card>
                 <md-card-header>
-                    Latest Menu Items
+                    Menu Items
                 </md-card-header>
                 <md-card-content>
                     <table>
                         <tr>
                             <th>Name</th>
-                            <th>no of allergens</th>
-                            <th>type</th>
+                            <th>Allergens</th>
+                            <th>Type</th>
                         </tr>
                         <tr *ngFor="let rest of restaurant.menu">
                             <td data-th="Name">{{rest.name}}</td>
@@ -19,6 +19,7 @@
                         </tr>
                     </table>
                 </md-card-content>
+                <button type="button" (click)="gotoMenu()" md-raised-button> add new item <i class="fa fa-plus"></i></button>
             </md-card>
         </div>
     </div>

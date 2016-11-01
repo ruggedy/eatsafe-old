@@ -30,29 +30,25 @@
                 <div class="open-times">
                     <h3>Opening</h3>
                     <div class="form-group">
-                        <input list="openHour" formControlName="openHour">
-                        <datalist id="openHour">
+                        <select formControlName="openHour">
                             <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
-                        </datalist>
+                        </select>
                         <span>:</span>
-                        <input list="openMin" formControlName="openMin">
-                        <datalist id="openMin">
+                        <select formControlName="openMin">
                             <option *ngFor="let m of timesMin" [value]='m'>{{m}}</option>
-                        </datalist>
+                        </select>
                     </div> 
                 </div>
                 <div class="close-times">
                     <h3>Closing</h3>
                     <div class="form-group">
-                        <input list="closeHour" formControlName="closeHour">
-                        <datalist id="closeHour">
+                        <select formControlName="closeHour">
                             <option *ngFor="let h of timesHour" [value]='h'>{{h}}</option>
-                        </datalist>
+                        </select>
                         <span>:</span>
-                        <input list="closeMin" formControlName="closeMin">
-                        <datalist id="closeMin">
+                        <select formControlName="closeMin">
                             <option *ngFor="let m of timesMin" [value]='m'>{{m}}</option>
-                        </datalist>
+                        </select>
                     </div> 
                 </div>
             </div>

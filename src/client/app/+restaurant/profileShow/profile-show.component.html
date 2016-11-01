@@ -1,4 +1,4 @@
-<div @flyInOut="'in'" class="container-fluid">
+<div @flyInOut="'in'" class="container">
     <div class="row">
         <div class="col-md-12">
             <md-card> 
@@ -7,13 +7,13 @@
                     <ul>
                         <li *ngFor="let working of workingHours" [ngClass]="working.color">
                             <div class="row">
-                                <div class="col-md-7 col-sm-4 col-xs-5 day  " >
+                                <div class=" colcol-xs-5 col-md-7 day">
                                     {{working.day.substr(0,1).toUpperCase() + working.day.slice(1)}}
                                 </div>
-                                <div *ngIf="!working.closed"  class="col-md-offset-1 col-md-4 col-sm-5 col-xs-5 time1">
+                                <div *ngIf="!working.closed"  class=" col-xs-5 col-md-offset-1 col-md-4 time1">
                                     {{working.startHour}}:{{working.startMin}} - {{working.endHour}}:{{working.endMin}}
                                 </div>
-                                <div *ngIf="working.closed"  class="col-md-offset-1 col-md-4 col-sm-4 col-xs-5 time1 closed">
+                                <div *ngIf="working.closed"  class="col-xs-5 col-md-offset-1 col-md-4 time1 closed">
                                     closed
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12 col-md-5">
                     <md-card>
                         <md-card-header>
                             Address
@@ -36,7 +36,7 @@
                         </md-card-content>
                     </md-card>
                 </div>
-                <div class="col-md-12">
+                <div class="col-xs-12 col-md-offset-1 col-md-5">
                     <md-card>
                         <md-card-header>
                             Contact info

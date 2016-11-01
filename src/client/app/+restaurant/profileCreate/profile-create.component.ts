@@ -29,7 +29,7 @@ export class ProfileCreateComponent implements OnInit {
     init: Restaurant = new Restaurant(null, null, null, null, null, null, null, null, null, null);
     restaurant: any;
     time: any;
-    nav: string[] = ['home','redirect'];
+    nav: string[] = ['home'];
 
     myRestaurant(event: any) {
         this.restaurant = this.dFC.dataFormatConvert(event.value)
@@ -37,9 +37,9 @@ export class ProfileCreateComponent implements OnInit {
             .subscribe(
                 response => {
                     this._rs.restaurantChanged(response);
-                    console.log(response);
+                    
                 },
-                error => console.log(error)
+                error => error
             )
 
             localStorage.removeItem('token');
@@ -47,8 +47,7 @@ export class ProfileCreateComponent implements OnInit {
             localStorage.removeItem('restaurant');
     }
     ngOnInit() { 
-        console.log('it inits')
-        this.time = this.tFC.timeFormatConvert(this.init? this.init.start : null, this.init? this.init.end : null, null);
+        this.time = this.tFC.timeFormatConvert(this.init? this.init.start : null, this.init? this.init.end : null, null); 
     }
 
 }

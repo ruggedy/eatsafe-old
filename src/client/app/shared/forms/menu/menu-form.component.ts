@@ -21,24 +21,24 @@ export class MenuFormComponent implements OnInit {
     @Input() nav: string[] = [];
     formActive: boolean = true;
     toggled: boolean = true;
+    checkedClick: boolean = true;
     validChecked: boolean = true;
     
     allergens: any[] = [
         'Celery',
-        'Cereals containing gluten',
+        'Gluten',
         'Crustaceans',
         'Eggs',
         'Fish',
         'Lupin',
-        'Milk',
+        'Dairy',
         'Molluscs',
         'Mustard',
         'Nuts',
         'Peanuts',
-        'Sesame seeds',
-        'soya',
-        'Sulphur dioxide',
-
+        'Sesame',
+        'Soya',
+        'Sulphites',
     ]
 
     menu : Menu;
@@ -53,23 +53,26 @@ export class MenuFormComponent implements OnInit {
         return false;
     }
 
+    toggleCheckedClick(){
+        return this.checkedClick = !this.checkedClick;
+    }
+
     toggle(){
         this.toggled = !this.toggled;
-        if(this.toggled === false && this.checked[0] !== undefined) {
+        if(this.toggled === false) {
             this.validChecked = false;
         } else {
             this.validChecked = true;
         }
     }
     onSubmit() {
-        if(this.checked.length > 0 && this.menuForm.valid) {
+        if(this.menuForm.valid) {
             this.value.emit({
                 value: this.menuForm.value,
                 checked: this.checked
             });       
             return true;
         }
-        console.log("Something Went terribly Wrong, you need to go die now"); // TODO: Defo Remove .. if found in Prod, Hunt <= this guy down.
         return false;
         
     }
@@ -86,9 +89,20 @@ export class MenuFormComponent implements OnInit {
         return false;
     }
 
+    validateChecked2(value: string){
+
+        if(this.checked[0]){
+            for(let i=0; i<this.checked.length; i++) {
+                if(value === this.checked[i]) {
+                    return true
+                }
+            }
+        }
+        return false;
+    }
+
     updateRadio(value: any) {
         this.init.menu = value.value;
-        console.log(this.init.menu);
     }
       
     validateRadio(value: string){
@@ -99,7 +113,6 @@ export class MenuFormComponent implements OnInit {
     }  
 
     updateChecked(allergen:string, event:any){
-        
         let index = this.checked.indexOf(allergen);
         if (event.checked) {
             if (index === -1) {
@@ -110,11 +123,19 @@ export class MenuFormComponent implements OnInit {
                 this.checked.splice(index, 1)
             }
         }
+    }
 
-        if(!this.toggled && this.checked[0] !== undefined){
-            this.validChecked = false;
+    updateChecked2(allergen:string, event1:any){
+        console.log(event);
+        let index = this.checked.indexOf(allergen);
+        if (event1) {
+            if (index === -1) {
+                this.checked.push(allergen);
+            }
         } else {
-            this.validChecked = true;
+            if (index !== -1) {
+                this.checked.splice(index, 1)
+            }
         }
     }
 
